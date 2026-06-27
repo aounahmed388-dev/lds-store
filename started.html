@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LDS – Laraib's Digital Store</title>
+
+    <!-- ─── FONTS ─── -->
+    <link href="https://fonts.cdnfonts.com/css/eaglore" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            background: linear-gradient(145deg, #d9d9d9 0%, #ececec 45%, #ffffff 100%);
+        }
+
+        /* ───────────── HEADER ───────────── */
+        header {
+            position: fixed;
+            top: 13.5px;
+            left: 0;
+            width: 100%;
+            padding: 0 13.5px;
+            z-index: 9999;
+        }
+
+        .container {
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            padding: 10.8px 18px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 16.2px;
+            box-shadow: 0 9px 27px rgba(0, 0, 0, 0.18);
+        }
+
+        .logo {
+            color: #7E231E;
+            font-size: 21.6px;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 28.8px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            position: relative;
+            transition: 0.35s;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5.4px;
+            width: 0;
+            height: 1.8px;
+            background: #7E231E;
+            transition: 0.35s;
+        }
+
+        nav a:hover {
+            transform: translateY(-1.8px);
+            color: #7E231E;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta {
+            justify-self: end;
+            text-decoration: none;
+            background: #fff;
+            color: #333;
+            padding: 9px 19.8px;
+            border-radius: 36px;
+            font-size: 12.6px;
+            font-weight: 700;
+            transition: 0.35s;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        }
+
+        .cta:hover {
+            transform: none;
+            background: #7E231E;
+            color: #fff;
+            box-shadow: 0 9px 22.5px rgba(126, 35, 30, 0.35);
+        }
+
+        .hamburger {
+            display: none;
+            width: 25.2px;
+            height: 19.8px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            height: 2.7px;
+            width: 100%;
+            background: #fff;
+            border-radius: 18px;
+            transition: 0.35s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8.1px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8.1px) rotate(-45deg);
+        }
+
+        /* ───────────── HOME ───────────── */
+        .home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 110px 7.2% 0;
+        }
+
+        .home-content {
+            width: 100%;
+            max-width: 1280px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .home-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+            align-self: center;
+            padding-bottom: 40px;
+        }
+
+        .home-text h1 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: #7E231E;
+            font-size: 52px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .home-text p {
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            color: #2d2d2d;
+            font-size: 14.5px;
+            line-height: 1.7;
+            max-width: 480px;
+            font-weight: 500;
+        }
+
+        .home-image {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100%;
+            align-self: end;
+            padding-bottom: 0;
+        }
+
+        .home-image img {
+            width: 100%;
+            max-width: 600px;
+            max-height: calc(100vh - 110px - 20px);
+            height: auto;
+            display: block;
+            border-radius: 10.8px;
+            filter: drop-shadow(0 14.4px 28.8px rgba(0, 0, 0, 0.12));
+            object-fit: contain;
+        }
+
+        /* ───────────── BRAND RIBBON ───────────── */
+        .brand-ribbon {
+            background: #7E231E;
+            color: #fff;
+            padding: 14px 0;
+            overflow: hidden;
+            border-top: 2px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(126, 35, 30, 0.25);
+        }
+
+        .ribbon-track {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-ribbon 28s linear infinite;
+            width: max-content;
+        }
+
+        .ribbon-content {
+            display: flex;
+        }
+
+        .ribbon-content span {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 45px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .ribbon-content span::before {
+            content: "✦";
+            font-size: 16px;
+            opacity: 0.5;
+            color: #fff;
+        }
+
+        @keyframes scroll-ribbon {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ───────────── SHOP SECTION ───────────── */
+        .shop {
+            padding: 72px 0 54px;
+            background: transparent;
+        }
+
+        .shop-container {
+            width: 100%;
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+
+        .shop-header h2 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: #7E231E;
+            font-size: 32.4px;
+            font-weight: 400;
+        }
+
+        .btn-view-all {
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            color: #7E231E;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            padding: 9px 21.6px;
+            border: 2px solid #7E231E;
+            border-radius: 27px;
+            transition: 0.3s ease;
+        }
+
+        .btn-view-all:hover {
+            background: #7E231E;
+            color: #fff;
+        }
+
+        .shop-grid-row {
+            display: grid;
+            gap: 18px;
+        }
+
+        .row-1 {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            margin-bottom: 27px;
+        }
+
+        .row-2 {
+            grid-template-columns: repeat(5, 1fr);
+            margin-bottom: 0;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 10.8px;
+            overflow: hidden;
+            box-shadow: 0 3.6px 10.8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5.4px);
+            box-shadow: 0 10.8px 28.8px rgba(0, 0, 0, 0.10);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #e9ecef;
+            display: block;
+        }
+
+        .card-big img {
+            height: 252px;
+        }
+
+        .product-info {
+            padding: 14.4px 16.2px 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            font-size: 14.4px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3.6px;
+        }
+
+        .product-info .price {
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            font-size: 16.2px;
+            font-weight: 700;
+            color: #7E231E;
+            margin-bottom: 12.6px;
+        }
+
+        .btn-add-cart {
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            background: #7E231E;
+            color: #fff;
+            border: none;
+            padding: 9px 0;
+            border-radius: 27px;
+            font-size: 11.7px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-add-cart:hover {
+            background: #5c1915;
+            transform: scale(1.02);
+        }
+
+        /* ───────────── SPACER SECTIONS ───────────── */
+        .spacer {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.15);
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1.8px;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            background: transparent;
+        }
+
+        /* ──────────────────────────────────────────────────────
+                   RESPONSIVE BREAKPOINTS
+                   ────────────────────────────────────────────────────── */
+
+        /* ── iPad / Large Tablet (768px – 992px) ── */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: auto auto;
+                position: relative;
+            }
+
+            nav {
+                position: absolute;
+                top: calc(100% + 10.8px);
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                gap: 19.8px;
+                padding: 22.5px;
+                background: rgba(255, 255, 255, 0.12);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                border-radius: 16.2px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10.8px);
+                transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+            }
+
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                justify-self: end;
+            }
+
+            /* ── Home on iPad ── */
+            .home {
+                padding: 100px 25px 0;
+                height: 100vh;
+                min-height: 100vh;
+                overflow: hidden;
+            }
+
+            .home-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                height: 100%;
+                width: 100%;
+            }
+
+            .home-text {
+                text-align: center;
+                align-items: center;
+                padding: 0 0 10px 0;
+                width: 100%;
+                order: 1;
+            }
+
+            .home-text p {
+                max-width: 100%;
+            }
+
+            .home-text h1 {
+                font-size: 40px;
+            }
+
+            .home-image {
+                order: 2;
+                height: auto;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                align-self: end;
+                padding: 0;
+                margin-top: auto;
+                flex: 0 0 auto;
+            }
+
+            .home-image img {
+                max-width: 380px;
+                max-height: 45vh;
+                width: auto;
+                height: auto;
+            }
+
+            /* ── Shop on iPad ── */
+            .row-1 {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+                margin-bottom: 24px;
+            }
+            .card-big {
+                grid-column: span 2;
+            }
+            .card-big img {
+                height: 200px;
+            }
+            .row-2 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+            .product-card img {
+                height: 160px;
+            }
+
+            .ribbon-content span {
+                font-size: 18px;
+                padding: 0 30px;
+            }
+
+            .shop {
+                padding: 65px 0 48px;
+            }
+            .shop-container {
+                padding: 0 16px;
+            }
+            .shop-header {
+                margin-bottom: 32px;
+            }
+            .shop-header h2 {
+                font-size: 28px;
+            }
+            .btn-view-all {
+                font-size: 12.5px;
+                padding: 8px 18px;
+            }
+            .product-info {
+                padding: 12px 14px 16px;
+            }
+            .product-info h3 {
+                font-size: 13.5px;
+            }
+            .product-info .price {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            .btn-add-cart {
+                padding: 8px 0;
+                font-size: 11px;
+                border-radius: 24px;
+            }
+        }
+
+        /* ── Small Tablet (600px – 768px) ── */
+        @media (max-width: 768px) {
+            .home {
+                padding: 92px 20px 0;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .home-content {
+                gap: 14px;
+            }
+
+            .home-text {
+                padding: 0 0 6px 0;
+            }
+
+            .home-text h1 {
+                font-size: 34px;
+            }
+
+            .home-text p {
+                font-size: 13.5px;
+            }
+
+            .home-image img {
+                max-width: 340px;
+                max-height: 42vh;
+            }
+
+            .shop {
+                padding: 58px 0 42px;
+            }
+            .shop-container {
+                padding: 0 14px;
+            }
+            .shop-header {
+                margin-bottom: 28px;
+            }
+            .shop-header h2 {
+                font-size: 26px;
+            }
+            .btn-view-all {
+                font-size: 12px;
+                padding: 7px 16px;
+            }
+            .row-1 {
+                gap: 14px;
+                margin-bottom: 20px;
+            }
+            .row-2 {
+                gap: 14px;
+            }
+            .product-card img {
+                height: 150px;
+            }
+            .card-big img {
+                height: 190px;
+            }
+            .product-info {
+                padding: 11px 12px 14px;
+            }
+            .product-info h3 {
+                font-size: 13px;
+            }
+            .product-info .price {
+                font-size: 14px;
+                margin-bottom: 9px;
+            }
+            .btn-add-cart {
+                padding: 7.5px 0;
+                font-size: 10.5px;
+                border-radius: 22px;
+            }
+            .ribbon-content span {
+                font-size: 16px;
+                padding: 0 24px;
+                letter-spacing: 2px;
+            }
+            .brand-ribbon {
+                padding: 11px 0;
+            }
+        }
+
+        /* ── Mobile (≤600px) ── */
+        @media (max-width: 600px) {
+            /* ── Home on Mobile ── */
+            .home {
+                padding: 108px 16px 0;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .home-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 4px;
+                height: 100%;
+                width: 100%;
+                padding-bottom: 0;
+            }
+
+            .home-text {
+                text-align: center;
+                align-items: center;
+                padding: 0;
+                width: 100%;
+                flex: 0 0 auto;
+                order: 1;
+                padding-top: 0;
+                gap: 6px;
+            }
+
+            .home-text h1 {
+                font-size: 28px;
+                margin-bottom: 0;
+                line-height: 1.15;
+            }
+
+            .home-text p {
+                font-size: 12.5px;
+                max-width: 100%;
+                line-height: 1.6;
+                margin-top: 0;
+            }
+
+            .home-image {
+                flex: 0 0 auto;
+                margin-top: auto;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                order: 2;
+                padding: 0;
+            }
+
+            .home-image img {
+                max-width: 88%;
+                max-height: 56vh;
+                width: auto;
+                height: auto;
+                display: block;
+                border-radius: 10.8px;
+                filter: drop-shadow(0 14.4px 28.8px rgba(0, 0, 0, 0.12));
+                object-fit: contain;
+            }
+
+            /* ── Shop on Mobile ── */
+            .shop {
+                padding: 50px 0 32px;
+            }
+            .shop-container {
+                padding: 0 12px;
+            }
+            .shop-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                margin-bottom: 24px;
+            }
+            .shop-header h2 {
+                font-size: 22px;
+            }
+            .btn-view-all {
+                font-size: 11px;
+                padding: 6px 15px;
+                border-width: 1.8px;
+            }
+
+            /* Row 1: Big card full width, others 2-column */
+            .row-1 {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+            .card-big {
+                grid-column: span 2;
+            }
+            .card-big img {
+                height: 190px;
+            }
+
+            /* Row 2: 2 columns */
+            .row-2 {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 0;
+            }
+
+            .product-card img {
+                height: 130px;
+            }
+
+            .product-info {
+                padding: 10px 11px 13px;
+            }
+            .product-info h3 {
+                font-size: 12px;
+                margin-bottom: 2px;
+            }
+            .product-info .price {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            .btn-add-cart {
+                padding: 6.5px 0;
+                font-size: 9.5px;
+                border-radius: 20px;
+            }
+
+            .ribbon-content span {
+                font-size: 13px;
+                padding: 0 14px;
+                letter-spacing: 1px;
+            }
+            .brand-ribbon {
+                padding: 8px 0;
+            }
+        }
+
+        /* ── Small Mobile (≤400px) ── */
+        @media (max-width: 400px) {
+            .home {
+                padding: 100px 12px 0;
+            }
+
+            .home-text h1 {
+                font-size: 24px;
+            }
+
+            .home-text p {
+                font-size: 11.5px;
+            }
+
+            .home-image img {
+                max-width: 92%;
+                max-height: 52vh;
+            }
+
+            .shop {
+                padding: 42px 0 28px;
+            }
+            .shop-container {
+                padding: 0 8px;
+            }
+            .shop-header h2 {
+                font-size: 19px;
+            }
+            .btn-view-all {
+                font-size: 10px;
+                padding: 5px 12px;
+            }
+            .row-1 {
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+            .row-2 {
+                gap: 10px;
+            }
+            .card-big img {
+                height: 160px;
+            }
+            .product-card img {
+                height: 110px;
+            }
+            .product-info {
+                padding: 8px 9px 11px;
+            }
+            .product-info h3 {
+                font-size: 11px;
+            }
+            .product-info .price {
+                font-size: 11.5px;
+                margin-bottom: 6px;
+            }
+            .btn-add-cart {
+                padding: 5.5px 0;
+                font-size: 8.5px;
+                border-radius: 16px;
+            }
+            .shop-header {
+                gap: 8px;
+                margin-bottom: 18px;
+            }
+            .ribbon-content span {
+                font-size: 11px;
+                padding: 0 10px;
+                letter-spacing: 0.8px;
+            }
+            .brand-ribbon {
+                padding: 6px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">LDS</a>
+
+            <nav id="nav">
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <a class="cta" href="https://wa.me/923001234567" target="_blank" rel="noopener">
+                Chat Now
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ─── HOME ─── -->
+    <section id="home" class="home">
+        <div class="home-content">
+            <div class="home-text">
+                <h1>Welcome to Laraib's Digital Store</h1>
+                <p>
+                    We're happy to have you here. Explore our collection of digital products
+                    and find the right solution for your needs. We're here to help you find
+                    what you're looking for.
+                </p>
+            </div>
+            <div class="home-image">
+                <img src="images/geek.png" alt="Home Hero" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── BRAND RIBBON ─── -->
+    <section class="brand-ribbon">
+        <div class="ribbon-track">
+            <div class="ribbon-content">
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+            </div>
+            <div class="ribbon-content">
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SHOP ─── -->
+    <section id="shop" class="shop">
+        <div class="shop-container">
+            <div class="shop-header">
+                <h2>Featured Products</h2>
+                <a href="shopviewall.html" class="btn-view-all">View All →</a>
+            </div>
+
+            <!-- ROW 1: 1 Big + 3 Small -->
+            <div class="shop-grid-row row-1">
+                <div class="product-card card-big">
+                    <img src="images/product1.jpg" alt="Product 1" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Premium Bundle</h3>
+                        <p class="price">$29.99</p>
+                        <button class="btn-add-cart" data-product="Premium Bundle">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product2.jpg" alt="Product 2" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Digital Planner</h3>
+                        <p class="price">$12.99</p>
+                        <button class="btn-add-cart" data-product="Digital Planner">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product3.jpg" alt="Product 3" loading="lazy" />
+                    <div class="product-info">
+                        <h3>E‑book Pack</h3>
+                        <p class="price">$8.49</p>
+                        <button class="btn-add-cart" data-product="E-book Pack">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product4.jpg" alt="Product 4" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Mockup Set</h3>
+                        <p class="price">$19.00</p>
+                        <button class="btn-add-cart" data-product="Mockup Set">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 2: 5 Equal Cards -->
+            <div class="shop-grid-row row-2">
+                <div class="product-card">
+                    <img src="images/product5.jpg" alt="Product 5" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Icon Pack</h3>
+                        <p class="price">$5.99</p>
+                        <button class="btn-add-cart" data-product="Icon Pack">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product6.jpg" alt="Product 6" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Social Templates</h3>
+                        <p class="price">$14.50</p>
+                        <button class="btn-add-cart" data-product="Social Templates">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product7.jpg" alt="Product 7" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Font Bundle</h3>
+                        <p class="price">$22.00</p>
+                        <button class="btn-add-cart" data-product="Font Bundle">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product8.jpg" alt="Product 8" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Stock Photos</h3>
+                        <p class="price">$9.99</p>
+                        <button class="btn-add-cart" data-product="Stock Photos">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="images/product9.jpg" alt="Product 9" loading="lazy" />
+                    <div class="product-info">
+                        <h3>UI Kit</h3>
+                        <p class="price">$34.00</p>
+                        <button class="btn-add-cart" data-product="UI Kit">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SPACER SECTIONS ─── -->
+    <section id="about" class="spacer">About</section>
+    <section id="services" class="spacer">Services</section>
+    <section id="portfolio" class="spacer">Portfolio</section>
+    <section id="contact" class="spacer">Contact</section>
+
+    <!-- ─── SCRIPT ─── -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const header = document.querySelector('header');
+            if (!header.contains(e.target) && nav.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+
+        // ── Buy Now: WhatsApp Redirect ──
+        document.querySelectorAll('.btn-add-cart').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const productName = this.getAttribute('data-product');
+                const phoneNumber = '923001234567';
+                const message = `Hi, I'm interested in buying: ${productName}`;
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+
+</body>
+</html>
