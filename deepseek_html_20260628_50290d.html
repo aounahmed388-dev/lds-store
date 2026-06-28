@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LDS – Laraib's Digital Store</title>
+
+    <!-- ─── FONTS ─── -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.cdnfonts.com/css/eaglore" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- ─── FAVICON ─── -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- ─── OPEN GRAPH / TWITTER CARD ─── -->
+    <meta property="og:title" content="Laraib's Digital Store – High-Quality Digital Products" />
+    <meta property="og:description" content="Explore our collection of premium digital planners, templates, e-books, and resources to boost your productivity and creativity." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.laraibsdigitalstore.com" />
+    <meta property="og:image" content="https://www.laraibsdigitalstore.com/images/social-share.jpg" />
+    <meta property="og:site_name" content="Laraib's Digital Store" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@laraibsdigital" />
+    <meta name="twitter:creator" content="@laraibsdigital" />
+    <meta name="twitter:title" content="Laraib's Digital Store – High-Quality Digital Products" />
+    <meta name="twitter:description" content="Explore our collection of premium digital planners, templates, e-books, and resources to boost your productivity and creativity." />
+    <meta name="twitter:image" content="https://www.laraibsdigitalstore.com/images/social-share.jpg" />
+
+    <style>
+        /* ───────────── CSS CUSTOM PROPERTIES (Design Tokens) ───────────── */
+        :root {
+            /* Colors with RGB variants for opacity composition */
+            --color-primary: #7E231E;
+            --color-primary-dark: #5c1915;
+            --color-primary-rgb: 126, 35, 30;
+            --color-text-dark: #1a1a1a;
+            --color-text-medium: #2d2d2d;
+            --color-text-light: #555;
+            --color-white: #ffffff;
+            --color-white-rgb: 255, 255, 255;
+            --color-black-rgb: 0, 0, 0;
+
+            /* Glass effects using RGB variables */
+            --color-glass-bg: rgba(var(--color-white-rgb), 0.25);
+            --color-glass-border: rgba(var(--color-white-rgb), 0.3);
+            --color-glass-solid: rgba(var(--color-white-rgb), 0.55);
+
+            /* Spacing scale (8-point grid) */
+            --spacing-3xs: 2px;
+            --spacing-2xs: 4px;
+            --spacing-xs: 6px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+            --spacing-xxxl: 64px;
+
+            /* Border radii */
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-pill: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 9px 27px rgba(var(--color-black-rgb), 0.12);
+            --shadow-md: 0 9px 27px rgba(var(--color-black-rgb), 0.08);
+            --shadow-lg: 0 25px 50px rgba(var(--color-black-rgb), 0.2);
+            --shadow-hover: 0 16px 40px rgba(var(--color-black-rgb), 0.12);
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.35s ease;
+            --transition-slow: 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            /* Gradient stop for background fade */
+            --gradient-circle-stop: 55%;
+        }
+
+        /* ───────────── RESET ───────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            background: linear-gradient(160deg, #d4d4d4 0%, #f5f5f5 40%, #ffffff 100%);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ───────────── VISUALLY HIDDEN (for accessibility) ───────────── */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ───────────── FADE IN EFFECT ───────────── */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+            will-change: opacity, transform;
+        }
+
+        .fade-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ───────────── HEADER ───────────── */
+        header {
+            position: fixed;
+            top: var(--spacing-md);
+            left: 0;
+            width: 100%;
+            padding: 0 var(--spacing-md);
+            z-index: 9999;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--color-glass-bg);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid var(--color-glass-border);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo {
+            color: var(--color-primary);
+            font-size: 1.35rem;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+
+        nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.84375rem;
+            font-weight: 600;
+            position: relative;
+            transition: color var(--transition-medium);
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5.4px;
+            width: 0;
+            height: 1.8px;
+            background: var(--color-primary);
+            transition: var(--transition-medium);
+        }
+
+        nav a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .cta {
+            justify-self: end;
+            text-decoration: none;
+            background: var(--color-primary);
+            color: #fff;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-pill);
+            font-size: 0.7875rem;
+            font-weight: 700;
+            transition: background var(--transition-medium), box-shadow var(--transition-medium);
+            will-change: background, box-shadow;
+        }
+
+        .cta:hover {
+            background: var(--color-primary-dark);
+            box-shadow: 0 9px 22.5px rgba(var(--color-primary-rgb), 0.35);
+        }
+
+        .cta:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 3px;
+            border-radius: var(--radius-pill);
+        }
+
+        /* ─── Hamburger Menu (Native Button) ─── */
+        .hamburger {
+            display: none;
+            width: 25.2px;
+            height: 19.8px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hamburger span {
+            height: 2.7px;
+            width: 100%;
+            background: var(--color-primary);
+            border-radius: var(--radius-pill);
+            transition: var(--transition-medium);
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8.1px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8.1px) rotate(-45deg);
+        }
+
+        .hamburger:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 4px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ───────────── HOME SECTION ───────────── */
+        .home {
+            height: 100vh;
+            height: 100svh;
+            padding-top: 90px;
+            padding-left: 8%;
+            padding-right: 8%;
+            overflow: hidden;
+            display: flex;
+            align-items: stretch;
+            position: relative;
+            z-index: 1;
+        }
+
+        .home-content {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: end;
+            gap: var(--spacing-xl);
+            height: 100%;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .home-text {
+            align-self: center;
+            max-width: 580px;
+            padding-bottom: var(--spacing-lg);
+        }
+
+        .home-text h1 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-size: clamp(2.2rem, 5.5vw, 4rem);
+            line-height: 1.1;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            font-weight: 400;
+        }
+
+        .home-text p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--color-text-medium);
+            max-width: 470px;
+        }
+
+        .home-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 12px;
+            margin-top: var(--spacing-lg);
+        }
+
+        .home-tag {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-pill);
+            padding: var(--spacing-xs) 18px var(--spacing-xs) 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            background: rgba(var(--color-white-rgb), 0.3);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            transition: background var(--transition-medium), transform var(--transition-fast), box-shadow var(--transition-medium);
+            will-change: transform, box-shadow;
+        }
+
+        .home-tag:hover {
+            background: rgba(var(--color-primary-rgb), 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(var(--color-primary-rgb), 0.15);
+        }
+
+        .home-tag svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        .home-image {
+            align-self: end;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100%;
+            width: 100%;
+            min-height: 0;
+        }
+
+        .home-image img {
+            width: min(100%, 550px);
+            height: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 20px 35px rgba(var(--color-black-rgb), 0.12));
+        }
+
+        /* ───────────── SVG BACKGROUND (HOME & ABOUT) ───────────── */
+        .home-bg,
+        .about-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .home-bg svg,
+        .about-bg svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .home-bg path,
+        .about-bg path {
+            fill: none;
+            stroke: var(--color-primary);
+            stroke-width: 2;
+            opacity: 0.18;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .home-bg line,
+        .about-bg line {
+            stroke: var(--color-primary);
+            stroke-width: 1;
+            opacity: 0.10;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .home-bg::after,
+        .about-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent var(--gradient-circle-stop), rgba(var(--color-black-rgb), 0.04));
+        }
+
+        /* ───────────── BRAND RIBBON ───────────── */
+        .brand-ribbon {
+            background: var(--color-primary);
+            color: #fff;
+            padding: var(--spacing-md) 0;
+            overflow: hidden;
+            border-top: 2px solid rgba(var(--color-white-rgb), 0.08);
+            border-bottom: 2px solid rgba(var(--color-white-rgb), 0.08);
+            box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.25);
+            position: relative;
+            z-index: 1;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .ribbon-track {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            animation: scroll-ribbon 28s linear infinite;
+        }
+
+        .ribbon-content {
+            display: flex;
+        }
+
+        .ribbon-content span {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-size: 1.375rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .ribbon-content span::before {
+            content: "✦";
+            font-size: 16px;
+            opacity: 0.5;
+            color: #fff;
+        }
+
+        @keyframes scroll-ribbon {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ───────────── SHOP SECTION ───────────── */
+        .shop {
+            padding: 80px 0 60px;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .shop-container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 8%;
+        }
+
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .shop-header h2 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: var(--color-primary);
+            font-size: 2.25rem;
+            font-weight: 400;
+        }
+
+        .btn-view-all {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-pill);
+            transition: background var(--transition-medium), color var(--transition-medium), box-shadow var(--transition-medium);
+        }
+
+        .btn-view-all:hover {
+            background: var(--color-primary);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.25);
+        }
+
+        .btn-view-all:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 3px;
+            border-radius: var(--radius-pill);
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .product-card {
+            position: relative;
+            grid-column: span 1;
+            background: rgba(var(--color-white-rgb), 0.15);
+            border: 1px solid rgba(var(--color-white-rgb), 0.35);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow:
+                0 8px 32px rgba(var(--color-black-rgb), 0.06),
+                inset 0 1px 0 rgba(var(--color-white-rgb), 0.5),
+                inset 0 -1px 0 rgba(var(--color-white-rgb), 0.1);
+            display: flex;
+            flex-direction: column;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            transition: transform var(--transition-fast), box-shadow var(--transition-medium);
+            will-change: transform, box-shadow;
+            perspective: 800px;
+            transform-style: preserve-3d;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            background: linear-gradient(135deg,
+                    rgba(var(--color-white-rgb), 0.35) 0%,
+                    rgba(var(--color-white-rgb), 0.1) 40%,
+                    rgba(var(--color-white-rgb), 0) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .product-card img,
+        .product-card .product-info {
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card.card-big {
+            grid-column: span 2;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background: rgba(233, 236, 239, 0.3);
+        }
+
+        .product-card.card-big img {
+            height: 280px;
+        }
+
+        .product-info {
+            padding: var(--spacing-md) 18px var(--spacing-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: 6px;
+        }
+
+        .price-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: nowrap;
+        }
+
+        .old-price {
+            font-size: 0.8125rem;
+            color: #888;
+            text-decoration: line-through;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .new-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            white-space: nowrap;
+        }
+
+        .btn-add-cart {
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 10px 0;
+            border-radius: var(--radius-pill);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.25);
+            transition: background var(--transition-medium), transform var(--transition-fast);
+            will-change: background, transform;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-add-cart:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 3px;
+            border-radius: var(--radius-pill);
+        }
+
+        /* ───────────── TERMS SECTION ───────────── */
+        .terms {
+            padding: 60px 8%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .terms-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .terms-glass {
+            background: var(--color-glass-solid);
+            border: 1px solid rgba(var(--color-white-rgb), 0.6);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+        }
+
+        .terms-glass h2 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .terms-intro {
+            color: var(--color-text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 80%;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .term-item {
+            background: rgba(var(--color-white-rgb), 0.4);
+            border: 1px solid rgba(var(--color-white-rgb), 0.5);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            transition: transform var(--transition-fast), box-shadow var(--transition-medium);
+            will-change: transform, box-shadow;
+        }
+
+        .term-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(var(--color-black-rgb), 0.06);
+        }
+
+        .term-item h3 {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .term-item h3 svg {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            fill: var(--color-primary);
+        }
+
+        .term-item p {
+            color: var(--color-text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ───────────── ABOUT SECTION ───────────── */
+        .about {
+            padding: 60px 8%;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .about-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-glass {
+            background: var(--color-glass-solid);
+            border: 1px solid rgba(var(--color-white-rgb), 0.6);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            display: block;
+            box-shadow: 0 8px 24px rgba(var(--color-black-rgb), 0.06);
+            background: rgba(233, 236, 239, 0.5);
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-size: 2.8rem;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-text-medium);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* ───────────── REVIEWS SECTION ───────────── */
+        .reviews {
+            padding: 60px 8%;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .reviews-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .reviews-header h2 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
+
+        .btn-add-review {
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition-medium), box-shadow var(--transition-medium);
+            box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.25);
+            will-change: background, box-shadow;
+        }
+
+        .btn-add-review:hover {
+            background: var(--color-primary-dark);
+            box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+        }
+
+        .btn-add-review:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 3px;
+            border-radius: var(--radius-pill);
+        }
+
+        .review-track-container {
+            overflow: hidden;
+            width: 100%;
+            padding: var(--spacing-md) 0;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        .review-track {
+            display: flex;
+            gap: var(--spacing-lg);
+            width: max-content;
+            animation: scroll-reviews 35s linear infinite;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .review-card {
+            flex: 0 0 300px;
+            padding: var(--spacing-lg);
+            background: rgba(var(--color-white-rgb), 0.6);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 16px rgba(var(--color-black-rgb), 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            will-change: transform, box-shadow;
+        }
+
+        .review-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.12);
+        }
+
+        .review-card .stars {
+            color: #FFD700;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .review-card .name {
+            font-weight: 700;
+            color: var(--color-text-dark);
+            font-size: 1rem;
+        }
+
+        .review-card .comment {
+            color: var(--color-text-medium);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-top: 4px;
+            flex: 1;
+        }
+
+        .review-card .date {
+            color: #888;
+            font-size: 0.75rem;
+            margin-top: var(--spacing-sm);
+        }
+
+        @keyframes scroll-reviews {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ───────────── MODAL ───────────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(var(--color-black-rgb), 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-lg);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: rgba(var(--color-white-rgb), 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(var(--color-white-rgb), 0.4);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-lg);
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+            transition: color var(--transition-medium);
+        }
+
+        .modal-close:hover {
+            color: var(--color-text-dark);
+        }
+
+        .modal-close:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .modal-box h3 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: var(--color-primary);
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 0.875rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(var(--color-black-rgb), 0.1);
+            border-radius: var(--radius-md);
+            background: rgba(var(--color-white-rgb), 0.5);
+            font-size: 0.875rem;
+            transition: border-color var(--transition-medium), box-shadow var(--transition-medium);
+            color: var(--color-text-dark);
+        }
+
+        .form-group input:focus-visible,
+        .form-group select:focus-visible,
+        .form-group textarea:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .btn-submit-review,
+        .btn-submit {
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-pill);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background var(--transition-medium), box-shadow var(--transition-medium);
+            box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.25);
+            will-change: background, box-shadow;
+        }
+
+        .btn-submit-review:hover,
+        .btn-submit:hover {
+            background: var(--color-primary-dark);
+            box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.35);
+        }
+
+        .btn-submit-review:focus-visible,
+        .btn-submit:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 3px;
+            border-radius: var(--radius-pill);
+        }
+
+        .btn-submit-review:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            margin-top: var(--spacing-md);
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-status.success {
+            color: #2e7d32;
+            display: block;
+        }
+        .form-status.error {
+            color: #c62828;
+            display: block;
+        }
+
+        /* ───────────── CONTACT SECTION ───────────── */
+        .contact {
+            padding: 60px 8%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-glass {
+            background: var(--color-glass-solid);
+            border: 1px solid rgba(var(--color-white-rgb), 0.6);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+        }
+
+        .contact-glass h2 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            color: var(--color-text-medium);
+            font-size: 0.9375rem;
+        }
+
+        .contact-detail-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        /* ───────────── FOOTER ───────────── */
+        footer {
+            background: var(--color-primary);
+            color: #fff;
+            padding: 28px 8% 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md) var(--spacing-xl);
+        }
+
+        .footer-brand h3 {
+            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-size: 1.375rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(var(--color-white-rgb), 0.8);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            transition: opacity var(--transition-medium);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-links a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(var(--color-white-rgb), 0.12);
+            padding-top: 14px;
+            margin-top: 14px;
+            text-align: center;
+            font-weight: 400;
+            opacity: 0.7;
+            font-size: 0.75rem;
+        }
+
+        /* ───────────── RESPONSIVE ───────────── */
+
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: auto auto;
+                position: relative;
+            }
+
+            nav {
+                position: absolute;
+                top: calc(100% + 10.8px);
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                gap: 19.8px;
+                padding: 28px;
+                background: rgba(var(--color-white-rgb), 0.92);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid rgba(var(--color-white-rgb), 0.3);
+                border-radius: var(--radius-lg);
+                box-shadow: 0 15px 35px rgba(var(--color-black-rgb), 0.15);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10.8px);
+                transition: opacity var(--transition-medium), transform var(--transition-medium);
+                transition-property: opacity, transform, visibility;
+                transition-duration: 0.35s, 0.35s, 0s;
+                transition-delay: 0s, 0s, 0.35s;
+            }
+
+            nav a {
+                color: var(--color-primary);
+            }
+
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                transition-delay: 0s, 0s, 0s;
+            }
+
+            .cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                justify-self: end;
+            }
+
+            .home {
+                height: 100vh;
+                height: 100svh;
+                padding: 90px 40px 0;
+            }
+
+            .home-content {
+                grid-template-columns: 1fr;
+                align-items: stretch;
+                gap: 10px;
+                height: 100%;
+                padding: 0;
+            }
+
+            .home-text {
+                align-self: center;
+                text-align: center;
+                max-width: 650px;
+                padding-bottom: 0;
+            }
+            .home-text p {
+                margin: auto;
+            }
+            .home-tags {
+                justify-content: center;
+            }
+
+            .home-image {
+                align-self: end;
+                height: auto;
+                flex: 1;
+                min-height: 40vh;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+            }
+            .home-image img {
+                width: min(80%, 420px);
+                height: 100%;
+                max-height: 48vh;
+                object-fit: contain;
+            }
+
+            .ribbon-content span {
+                font-size: 1.125rem;
+                padding: 0 30px;
+            }
+
+            .shop-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            .product-card.card-big {
+                grid-column: span 2;
+            }
+            .product-card {
+                grid-column: span 1;
+            }
+            .product-card.card-big img {
+                height: 220px;
+            }
+            .product-card img {
+                height: 160px;
+            }
+
+            .terms-intro {
+                max-width: 100%;
+            }
+
+            .about-glass {
+                padding: var(--spacing-xl);
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            .about-text {
+                text-align: center;
+            }
+            .about-image img {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-md);
+            }
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        /* ─── Mobile: 2×2 Tags & Image at Bottom ─── */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 var(--spacing-md);
+            }
+            .container {
+                padding: var(--spacing-md) 18px;
+                border-radius: var(--radius-lg);
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+            .hamburger span {
+                height: 3px;
+            }
+            nav {
+                padding: 28px;
+                gap: 18px;
+            }
+            nav a {
+                font-size: 0.9375rem;
+                padding: 4px 0;
+            }
+
+            .home {
+                height: 100vh;
+                height: 100svh;
+                padding: 85px var(--spacing-md) 0 var(--spacing-md);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .home-content {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                padding: 0;
+                gap: 6px;
+            }
+
+            .home-text {
+                flex: 0 0 auto;
+                text-align: center;
+                padding: 0 4px;
+            }
+
+            .home-text h1 {
+                font-size: clamp(1.8rem, 5.5vw, 2.4rem);
+                margin-bottom: 6px;
+            }
+
+            .home-text p {
+                font-size: 0.875rem;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .home-tags {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-sm);
+                margin-top: var(--spacing-md);
+                justify-items: center;
+            }
+
+            .home-tag {
+                width: 100%;
+                justify-content: center;
+                padding: var(--spacing-sm) 10px;
+                font-size: 0.8125rem;
+                white-space: nowrap;
+            }
+
+            .home-tag svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            /* Allow tags to wrap on very small screens */
+            @media (max-width: 350px) {
+                .home-tag {
+                    white-space: normal;
+                    text-align: center;
+                    font-size: 0.7rem;
+                    padding: var(--spacing-2xs) var(--spacing-xs);
+                }
+            }
+
+            .home-image {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                min-height: 0;
+                width: 100%;
+                padding-bottom: 0;
+            }
+
+            .home-image img {
+                width: auto;
+                height: auto;
+                max-height: 100%;
+                max-width: 60%;
+                object-fit: contain;
+                display: block;
+            }
+
+            .ribbon-content span {
+                font-size: 1rem;
+                padding: 0 24px;
+                letter-spacing: 2px;
+            }
+            .brand-ribbon {
+                padding: 11px 0;
+            }
+
+            .shop {
+                padding: 60px 0 40px;
+            }
+            .shop-container {
+                padding: 0 4%;
+            }
+            .shop-header h2 {
+                font-size: 1.75rem;
+            }
+            .btn-view-all {
+                font-size: 0.8125rem;
+                padding: var(--spacing-sm) 18px;
+            }
+            .shop-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .product-card.card-big {
+                grid-column: span 2;
+            }
+            .product-card {
+                grid-column: span 1;
+            }
+            .product-card.card-big img {
+                height: 200px;
+            }
+            .product-card img {
+                height: 140px;
+            }
+            .product-info {
+                padding: var(--spacing-md) 14px var(--spacing-md);
+            }
+            .product-info h3 {
+                font-size: 0.875rem;
+            }
+            .new-price {
+                font-size: 1.0625rem;
+            }
+            .old-price {
+                font-size: 0.75rem;
+            }
+            .price-wrapper {
+                gap: var(--spacing-sm);
+            }
+            .btn-add-cart {
+                padding: var(--spacing-sm) 0;
+                font-size: 0.6875rem;
+            }
+
+            .terms {
+                padding: 40px 4%;
+            }
+            .terms-glass {
+                padding: var(--spacing-lg);
+            }
+            .terms-glass h2 {
+                font-size: 2rem;
+            }
+            .terms-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            .term-item {
+                padding: 18px 20px;
+            }
+            .term-item h3 {
+                font-size: 1rem;
+            }
+            .term-item p {
+                font-size: 0.9rem;
+            }
+
+            .about {
+                padding: 60px 4% 40px;
+            }
+            .about-glass {
+                padding: var(--spacing-lg);
+            }
+            .about-grid {
+                gap: var(--spacing-xl);
+            }
+            .about-text h2 {
+                font-size: 2.2rem;
+            }
+            .about-image img {
+                max-width: 100%;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+            }
+
+            .reviews {
+                padding: 40px 4%;
+            }
+            .reviews-header h2 {
+                font-size: 2rem;
+            }
+            .btn-add-review {
+                font-size: 0.8125rem;
+                padding: var(--spacing-sm) 18px;
+            }
+            .review-card {
+                flex: 0 0 260px;
+                padding: 18px;
+            }
+
+            .contact {
+                padding: 40px 4%;
+            }
+            .contact-glass {
+                padding: var(--spacing-lg);
+            }
+            .contact-glass h2 {
+                font-size: 2rem;
+            }
+            .contact-container {
+                gap: var(--spacing-xl);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .footer-links {
+                justify-content: center;
+                gap: var(--spacing-md);
+            }
+            .footer-brand h3 {
+                font-size: 1.25rem;
+            }
+            .footer-links a {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            header {
+                top: var(--spacing-md);
+                padding: 0 10px;
+            }
+            .container {
+                padding: 10px 14px;
+                border-radius: var(--radius-md);
+            }
+            .logo {
+                font-size: 1.25rem;
+            }
+            .hamburger {
+                width: 24px;
+                height: 18px;
+            }
+            .hamburger span {
+                height: 2.5px;
+            }
+            nav {
+                padding: var(--spacing-lg) var(--spacing-md);
+                gap: 14px;
+            }
+            nav a {
+                font-size: 0.8125rem;
+            }
+
+            .home {
+                height: 100vh;
+                height: 100svh;
+                padding: 78px 12px 0 12px;
+            }
+            .home-content {
+                gap: 4px;
+            }
+            .home-text h1 {
+                font-size: clamp(1.6rem, 6.5vw, 2.0rem);
+            }
+            .home-text p {
+                font-size: 0.75rem;
+            }
+            .home-tag {
+                font-size: 0.6875rem;
+                padding: 6px 8px;
+                gap: 4px;
+                white-space: nowrap;
+            }
+            .home-tag svg {
+                width: 14px;
+                height: 14px;
+            }
+            .home-image img {
+                max-height: 100%;
+                max-width: 70%;
+            }
+
+            .ribbon-content span {
+                font-size: 0.8125rem;
+                padding: 0 14px;
+                letter-spacing: 1px;
+            }
+            .brand-ribbon {
+                padding: var(--spacing-sm) 0;
+            }
+
+            .shop {
+                padding: 50px 0 30px;
+            }
+            .shop-header h2 {
+                font-size: 1.375rem;
+            }
+            .btn-view-all {
+                font-size: 0.6875rem;
+                padding: 6px 14px;
+            }
+            .shop-grid {
+                gap: 10px;
+            }
+            .product-card.card-big img {
+                height: 160px;
+            }
+            .product-card img {
+                height: 110px;
+            }
+            .product-info {
+                padding: 10px 10px 12px;
+            }
+            .product-info h3 {
+                font-size: 0.75rem;
+            }
+            .new-price {
+                font-size: 0.9375rem;
+            }
+            .old-price {
+                font-size: 0.6875rem;
+            }
+            .price-wrapper {
+                gap: 6px;
+            }
+            .btn-add-cart {
+                padding: 6px 0;
+                font-size: 0.625rem;
+            }
+
+            .terms-glass {
+                padding: var(--spacing-md);
+            }
+            .terms-glass h2 {
+                font-size: 1.6rem;
+            }
+            .terms-grid {
+                gap: var(--spacing-md);
+            }
+            .term-item {
+                padding: 14px 16px;
+            }
+            .term-item h3 {
+                font-size: 0.95rem;
+            }
+            .term-item p {
+                font-size: 0.85rem;
+            }
+
+            .about {
+                padding: 50px 4% 30px;
+            }
+            .about-glass {
+                padding: var(--spacing-md);
+                border-radius: var(--radius-md);
+            }
+            .about-grid {
+                gap: var(--spacing-lg);
+            }
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+            .about-text p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            .about-image img {
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                border-radius: var(--radius-sm);
+            }
+
+            .reviews-header h2 {
+                font-size: 1.6rem;
+            }
+            .btn-add-review {
+                font-size: 0.6875rem;
+                padding: 6px 14px;
+            }
+            .review-card {
+                flex: 0 0 220px;
+                padding: 14px;
+            }
+            .review-card .stars {
+                font-size: 14px;
+            }
+            .review-card .name {
+                font-size: 14px;
+            }
+            .review-card .comment {
+                font-size: 12px;
+            }
+
+            .contact-glass {
+                padding: var(--spacing-md);
+            }
+            .contact-glass h2 {
+                font-size: 1.6rem;
+            }
+            .contact-detail-item {
+                font-size: 0.8125rem;
+            }
+            .form-group input,
+            .form-group textarea {
+                padding: 10px 14px;
+                font-size: 0.8125rem;
+            }
+
+            footer {
+                padding: var(--spacing-lg) 4% 14px;
+            }
+            .footer-brand h3 {
+                font-size: 1.125rem;
+            }
+            .footer-links a {
+                font-size: 0.6875rem;
+            }
+            .footer-bottom {
+                font-size: 0.6875rem;
+                padding-top: 10px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── HEADER ─── -->
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="sr-only">Laraib's Digital Store</span>
+                LARAIB
+            </a>
+
+            <nav id="nav" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#terms">Terms</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- ─── REPLACE PHONE NUMBER HERE ─── -->
+            <a class="cta" href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">
+                Chat Now
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ─── HOME SECTION ─── -->
+    <section class="home fade-section" id="home">
+
+        <!-- ─── SVG BACKGROUND ─── -->
+        <div class="home-bg" aria-hidden="true">
+            <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <path d="M-200 200 C350 -100 900 250 1200 700 S1700 1300 2200 800" />
+                <path d="M100 900 C500 650 950 700 1500 1200 S2100 1900 1700 2600" />
+                <path d="M-150 1700 C400 1400 900 1550 1350 2050 S1700 2800 2100 3300" />
+                <path d="M300 3900 C700 3400 950 2800 1200 2200 S1500 900 1850 -150" />
+                <line x1="450" y1="0" x2="450" y2="1080" />
+                <line x1="1350" y1="0" x2="1350" y2="1080" />
+                <line x1="0" y1="200" x2="1920" y2="200" />
+                <line x1="0" y1="500" x2="1920" y2="500" />
+                <line x1="0" y1="800" x2="1920" y2="800" />
+            </svg>
+        </div>
+
+        <div class="home-content">
+
+            <div class="home-text">
+                <h1>Welcome to Laraib's Digital Store</h1>
+                <p>
+                    We're happy to have you here. Explore our collection of digital
+                    products and find the right solution for your needs.
+                </p>
+
+                <div class="home-tags">
+                    <div class="home-tag">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Satisfied Customers</span>
+                    </div>
+                    <div class="home-tag">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <span>24/7 Instant Delivery</span>
+                    </div>
+                    <div class="home-tag">
+                        <svg viewBox="0 0 24 24"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm-2.5 16.5L4.5 12.5l2.1-2.1 2.9 2.9 7.5-7.5 2.1 2.1-9.5 9.6z"/></svg>
+                        <span>Secure Payments</span>
+                    </div>
+                    <div class="home-tag">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5zm0 3.3l5.5 2.7-5.5 2.7L6.5 8 12 5.3zM4 8.5l7 3.5v6.5l-7-3.5V8.5zm16 0v6.5l-7 3.5V12l7-3.5z"/></svg>
+                        <span>Premium Quality</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-image">
+                <img src="images/geek.png" alt="A cheerful customer browsing digital products on a tablet and smartphone, representing Laraib's Digital Store" loading="lazy" />
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─── BRAND RIBBON ─── -->
+    <section class="brand-ribbon">
+        <div class="ribbon-track">
+            <div class="ribbon-content">
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+            </div>
+            <div class="ribbon-content">
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+                <span>Laraib's Digital Store</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SHOP SECTION ─── -->
+    <section class="shop fade-section" id="shop">
+        <div class="shop-container">
+            <div class="shop-header">
+                <h2>Featured Products</h2>
+                <a href="shopviewall.html" class="btn-view-all">View All →</a>
+            </div>
+
+            <div class="shop-grid">
+
+                <!-- Card 1 (Big) -->
+                <div class="product-card card-big" data-tilt>
+                    <img src="images/product1.jpg" alt="Screenshot of a beautifully designed digital planner, part of the Premium Bundle, featuring a clean monthly calendar and goal tracker layout" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Premium Bundle</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 4,500</span>
+                            <span class="new-price">PKR 2,999</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Premium Bundle">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product2.jpg" alt="Modern digital planner with habit tracker, weekly overview, and notes section for productivity" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Digital Planner</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 2,500</span>
+                            <span class="new-price">PKR 1,299</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Digital Planner">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product3.jpg" alt="Collection of professional e-books covering digital marketing, UI/UX design, and business growth strategies" loading="lazy" />
+                    <div class="product-info">
+                        <h3>E‑book Pack</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 1,200</span>
+                            <span class="new-price">PKR 849</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="E-book Pack">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product4.jpg" alt="Professional mockup templates for branding, packaging, and product presentations" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Mockup Set</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 3,200</span>
+                            <span class="new-price">PKR 1,900</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Mockup Set">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product5.jpg" alt="Minimalist icon pack with 500+ icons for web and mobile app design projects" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Icon Pack</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 800</span>
+                            <span class="new-price">PKR 599</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Icon Pack">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product6.jpg" alt="Ready-to-use social media templates for Instagram, Facebook, LinkedIn, and Pinterest" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Social Templates</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 2,200</span>
+                            <span class="new-price">PKR 1,450</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Social Templates">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product7.jpg" alt="Premium font bundle with 10 hand-picked typefaces for branding and design work" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Font Bundle</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 3,500</span>
+                            <span class="new-price">PKR 2,200</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Font Bundle">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product8.jpg" alt="High-resolution stock photo collection with 50+ images for business, lifestyle, and nature themes" loading="lazy" />
+                    <div class="product-info">
+                        <h3>Stock Photos</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 1,500</span>
+                            <span class="new-price">PKR 999</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="Stock Photos">Buy Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-tilt>
+                    <img src="images/product9.jpg" alt="Complete UI kit with 200+ components for web and mobile app design projects" loading="lazy" />
+                    <div class="product-info">
+                        <h3>UI Kit</h3>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 5,500</span>
+                            <span class="new-price">PKR 3,400</span>
+                        </div>
+                        <button class="btn-add-cart" data-product="UI Kit">Buy Now</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TERMS SECTION ─── -->
+    <section class="terms fade-section" id="terms">
+        <div class="terms-container">
+            <div class="terms-glass">
+                <h2>Terms & Conditions</h2>
+                <p class="terms-intro">
+                    Welcome to Laraib's Digital Store. By using our website and purchasing our digital products,
+                    you agree to comply with and be bound by the following terms and conditions.
+                </p>
+
+                <div class="terms-grid">
+                    <div class="term-item">
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                            Digital Product Delivery
+                        </h3>
+                        <p>All products are delivered instantly via download link or email immediately after purchase. If you encounter any issues accessing your order, our support team is ready to assist.</p>
+                    </div>
+
+                    <div class="term-item">
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                            License & Usage Rights
+                        </h3>
+                        <p>Purchased products include a license for personal or commercial use, unless specified otherwise. Redistribution, reselling, or sharing of our digital assets is strictly prohibited.</p>
+                    </div>
+
+                    <div class="term-item">
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                            Refund & Cancellation Policy
+                        </h3>
+                        <p>Due to the digital nature of our products, all sales are final and non-refundable. However, if you experience technical difficulties, please contact us for a resolution.</p>
+                    </div>
+
+                    <div class="term-item">
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm-2.5 16.5L4.5 12.5l2.1-2.1 2.9 2.9 7.5-7.5 2.1 2.1-9.5 9.6z"/></svg>
+                            Privacy & Data Security
+                        </h3>
+                        <p>Your privacy is paramount. We use secure payment gateways and do not store your financial information. Your personal data is safe and never shared with third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ABOUT SECTION ─── -->
+    <section class="about fade-section" id="about">
+
+        <!-- ─── SVG BACKGROUND (SAME AS HOME) ─── -->
+        <div class="about-bg" aria-hidden="true">
+            <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <path d="M-200 200 C350 -100 900 250 1200 700 S1700 1300 2200 800" />
+                <path d="M100 900 C500 650 950 700 1500 1200 S2100 1900 1700 2600" />
+                <path d="M-150 1700 C400 1400 900 1550 1350 2050 S1700 2800 2100 3300" />
+                <path d="M300 3900 C700 3400 950 2800 1200 2200 S1500 900 1850 -150" />
+                <line x1="450" y1="0" x2="450" y2="1080" />
+                <line x1="1350" y1="0" x2="1350" y2="1080" />
+                <line x1="0" y1="200" x2="1920" y2="200" />
+                <line x1="0" y1="500" x2="1920" y2="500" />
+                <line x1="0" y1="800" x2="1920" y2="800" />
+            </svg>
+        </div>
+
+        <div class="about-container">
+            <div class="about-glass">
+                <div class="about-grid">
+
+                    <div class="about-image">
+                        <img src="images/about-us.jpg" alt="A clean, modern workspace with a laptop and coffee, symbolizing digital creativity and productivity" loading="lazy" />
+                    </div>
+
+                    <div class="about-text">
+                        <h2>About Laraib's Digital Store</h2>
+                        <p>
+                            Laraib's Digital Store (LDS) was founded with a simple mission: to provide
+                            high-quality digital products that make work, learning, and creativity easier
+                            for everyone. We believe that the right tools can transform the way people
+                            work and create.
+                        </p>
+                        <p>
+                            Our collection is carefully curated to include templates, planners, resources,
+                            and bundles that are designed with simplicity and quality in mind. Whether
+                            you're a freelancer, student, or business owner, we're here to help you succeed.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── REVIEWS SECTION ─── -->
+    <section class="reviews fade-section" id="reviews">
+        <div class="reviews-container">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <button class="btn-add-review" id="openReviewModal" aria-haspopup="dialog" aria-controls="reviewModal">
+                    Add Review
+                </button>
+            </div>
+
+            <div class="review-track-container">
+                <div class="review-track" id="reviewTrack">
+                    <!-- Reviews will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── REVIEW MODAL ─── -->
+    <div class="modal-overlay" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+        <div class="modal-box">
+            <button class="modal-close" id="closeReviewModal" aria-label="Close dialog">&times;</button>
+            <h3 id="modalHeading">Share Your Feedback</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="reviewName">Your Name</label>
+                    <input type="text" id="reviewName" name="name" placeholder="e.g. John Doe" required />
+                </div>
+                <div class="form-group">
+                    <label for="reviewRating">Rating</label>
+                    <select id="reviewRating" name="rating" required>
+                        <option value="5">★★★★★ (5)</option>
+                        <option value="4">★★★★☆ (4)</option>
+                        <option value="3">★★★☆☆ (3)</option>
+                        <option value="2">★★☆☆☆ (2)</option>
+                        <option value="1">★☆☆☆☆ (1)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reviewComment">Your Review</label>
+                    <textarea id="reviewComment" name="comment" placeholder="Share your experience with our products..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit-review" id="submitReviewBtn">Submit Review</button>
+                <div class="form-status" id="formStatus"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ─── CONTACT SECTION ─── -->
+    <section class="contact fade-section" id="contact">
+        <div class="contact-container">
+
+            <div class="contact-glass">
+                <h2>Get in Touch</h2>
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span>123 Digital Avenue, Lahore, Pakistan</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <span>+92 300 1234567</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <!-- ─── REPLACE EMAIL HERE ─── -->
+                        <span>support@laraibsdigital.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-glass">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>LARAIB</h3>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#terms">Terms</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Laraib's Digital Store. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ─── SCRIPT ─── -->
+    <script>
+        // ── Configuration ──
+        const FORMSPREE_URL = 'https://formspree.io/f/xaqgjdrl';
+
+        // ── Hamburger ──
+        const hamburgerBtn = document.getElementById('hamburger');
+        const primaryNav = document.getElementById('nav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isActive = hamburgerBtn.classList.toggle('active');
+            primaryNav.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', isActive);
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                primaryNav.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const header = document.querySelector('header');
+            if (!header.contains(e.target) && primaryNav.classList.contains('active')) {
+                hamburgerBtn.classList.remove('active');
+                primaryNav.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // ── Buy Now: WhatsApp Redirect ──
+        document.querySelectorAll('.btn-add-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.getAttribute('data-product');
+                const phoneNumber = '923001234567'; // ─── REPLACE ───
+                const message = `Hi, I'm interested in buying: ${productName}`;
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank', 'noopener,noreferrer');
+            });
+        });
+
+        // ── 3D Tilt Effect on Shop Cards ──
+        document.querySelectorAll('.product-card[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                this.style.transform =
+                    `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                this.style.boxShadow =
+                    `0 16px 40px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5)`;
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                this.style.boxShadow =
+                    '0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(255,255,255,0.1)';
+            });
+        });
+
+        // ── Reviews Data ──
+        const reviewsData = [{
+            name: "Alice Johnson",
+            rating: 5,
+            comment: "Absolutely loved the digital planner! It's beautifully designed and super functional."
+        }, {
+            name: "Bob Smith",
+            rating: 4,
+            comment: "Great quality products. The bundle was a steal for the price."
+        }, {
+            name: "Charlie Davis",
+            rating: 5,
+            comment: "The UI Kit saved me hours of design work. Highly recommend!"
+        }, {
+            name: "Diana Prince",
+            rating: 3,
+            comment: "Good products, but I wished the templates were more customizable."
+        }, {
+            name: "Ethan Hunt",
+            rating: 5,
+            comment: "Fantastic customer service and top-notch digital assets. Will buy again!"
+        }, {
+            name: "Fiona Gallagher",
+            rating: 4,
+            comment: "The social templates are perfect for my business. Very professional."
+        }, {
+            name: "George Costanza",
+            rating: 2,
+            comment: "Had some issues with the download link, but support fixed it quickly."
+        }, {
+            name: "Hermione Granger",
+            rating: 5,
+            comment: "I love the font bundle! It's perfect for my design projects."
+        }, {
+            name: "Indiana Jones",
+            rating: 4,
+            comment: "Stock photos are high quality. Would love to see more variety."
+        }, {
+            name: "Jack Sparrow",
+            rating: 5,
+            comment: "Premium Bundle is worth every penny. Saved me hundreds of dollars."
+        }];
+
+        // ── Render Reviews ──
+        function renderReviews() {
+            const track = document.getElementById('reviewTrack');
+
+            const originalHTML = reviewsData.map(review => `
+                <div class="review-card">
+                    <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+                    <div class="name">${review.name}</div>
+                    <div class="comment">${review.comment}</div>
+                    <div class="date">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+                </div>
+            `).join('');
+
+            const duplicateHTML = reviewsData.map(review => `
+                <div class="review-card" aria-hidden="true">
+                    <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+                    <div class="name">${review.name}</div>
+                    <div class="comment">${review.comment}</div>
+                    <div class="date">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+                </div>
+            `).join('');
+
+            track.innerHTML = originalHTML + duplicateHTML;
+        }
+
+        renderReviews();
+
+        // ── Modal Logic ──
+        const modal = document.getElementById('reviewModal');
+        const openBtn = document.getElementById('openReviewModal');
+        const closeBtn = document.getElementById('closeReviewModal');
+        const form = document.getElementById('reviewForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitReviewBtn');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+        }
+
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // ── Review Form Submission ──
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                rating: formData.get('rating'),
+                comment: formData.get('comment')
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+
+            fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error('Network response was not ok.');
+                })
+                .then(() => {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = '✅ Thank you! Your review has been submitted.';
+                    form.reset();
+                    setTimeout(closeModal, 2000);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = '❌ Oops! Something went wrong. Please try again.';
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Review';
+                });
+        });
+
+        // ── Contact Form Submission ──
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            const data = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                message: document.getElementById('contactMessage').value
+            };
+
+            fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('✅ Thank you! Your message has been sent.');
+                        this.reset();
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('❌ Oops! Something went wrong. Please try again.');
+                })
+                .finally(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
+        });
+
+        // ── Fade-in on Scroll ──
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
