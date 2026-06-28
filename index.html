@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
     <style>
+        /* ───────────── RESET ───────────── */
         * {
             margin: 0;
             padding: 0;
@@ -25,12 +26,13 @@
             min-height: 100vh;
             font-family: 'Open Sans', Arial, Helvetica, sans-serif;
             background: linear-gradient(145deg, #d9d9d9 0%, #ececec 45%, #ffffff 100%);
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ───────────── HEADER ───────────── */
         header {
             position: fixed;
-            top: 13.5px;
+            top: 16px;
             left: 0;
             width: 100%;
             padding: 0 13.5px;
@@ -43,12 +45,12 @@
             display: grid;
             grid-template-columns: auto 1fr auto;
             align-items: center;
-            padding: 10.8px 18px;
+            padding: 14px 20px;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 16.2px;
+            border-radius: 18px;
             box-shadow: 0 9px 27px rgba(0, 0, 0, 0.18);
         }
 
@@ -146,69 +148,65 @@
             transform: translateY(-8.1px) rotate(-45deg);
         }
 
-        /* ───────────── HOME ───────────── */
+        /* ───────────── HOME SECTION ───────────── */
         .home {
-            height: 100vh;
+            height: 100svh;
+            padding-top: 90px;
+            padding-left: 8%;
+            padding-right: 8%;
+            overflow: hidden;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 110px 7.2% 0;
+            align-items: stretch;
         }
 
         .home-content {
             width: 100%;
-            max-width: 1280px;
+            max-width: 1300px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            align-items: end;
+            gap: 16px;
             height: 100%;
-            align-items: center;
         }
 
         .home-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 16px;
             align-self: center;
-            padding-bottom: 40px;
+            max-width: 520px;
         }
 
         .home-text h1 {
-            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
-            color: #7E231E;
-            font-size: 52px;
+            font-family: 'Eaglore', sans-serif;
+            font-size: clamp(2.6rem, 4vw, 4rem);
             line-height: 1.1;
+            color: #7E231E;
+            margin-bottom: 12px;
             font-weight: 400;
         }
 
         .home-text p {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            color: #2d2d2d;
-            font-size: 14.5px;
+            font-size: 15px;
             line-height: 1.7;
-            max-width: 480px;
-            font-weight: 500;
+            color: #333;
+            max-width: 470px;
         }
 
         .home-image {
+            align-self: end;
             display: flex;
             justify-content: center;
             align-items: flex-end;
             height: 100%;
-            align-self: end;
-            padding-bottom: 0;
+            width: 100%;
         }
 
         .home-image img {
-            width: 100%;
-            max-width: 600px;
-            max-height: calc(100vh - 110px - 20px);
-            height: auto;
-            display: block;
-            border-radius: 10.8px;
-            filter: drop-shadow(0 14.4px 28.8px rgba(0, 0, 0, 0.12));
+            width: min(100%, 650px);
+            height: 100%;
+            max-height: calc(100svh - 90px);
             object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 20px 35px rgba(0, 0, 0, .15));
         }
 
         /* ───────────── BRAND RIBBON ───────────── */
@@ -220,13 +218,19 @@
             border-top: 2px solid rgba(255, 255, 255, 0.08);
             border-bottom: 2px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 4px 20px rgba(126, 35, 30, 0.25);
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .ribbon-track {
             display: flex;
             white-space: nowrap;
-            animation: scroll-ribbon 28s linear infinite;
             width: max-content;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            animation: scroll-ribbon 25s linear infinite;
         }
 
         .ribbon-content {
@@ -239,7 +243,7 @@
             font-weight: 400;
             letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 0 45px;
+            padding: 0 40px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -264,28 +268,28 @@
 
         /* ───────────── SHOP SECTION ───────────── */
         .shop {
-            padding: 72px 0 54px;
+            padding: 80px 0 60px;
             background: transparent;
         }
 
         .shop-container {
             width: 100%;
-            max-width: 1152px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 18px;
+            padding: 0 8%;
         }
 
         .shop-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 36px;
+            margin-bottom: 40px;
         }
 
         .shop-header h2 {
             font-family: 'Eaglore', Arial, Helvetica, sans-serif;
             color: #7E231E;
-            font-size: 32.4px;
+            font-size: 36px;
             font-weight: 400;
         }
 
@@ -293,63 +297,102 @@
             font-family: 'Open Sans', Arial, Helvetica, sans-serif;
             color: #7E231E;
             text-decoration: none;
-            font-size: 13.5px;
+            font-size: 15px;
             font-weight: 600;
-            padding: 9px 21.6px;
+            padding: 10px 24px;
             border: 2px solid #7E231E;
-            border-radius: 27px;
+            border-radius: 30px;
             transition: 0.3s ease;
         }
 
         .btn-view-all:hover {
             background: #7E231E;
             color: #fff;
+            box-shadow: 0 8px 24px rgba(126, 35, 30, 0.25);
         }
 
-        .shop-grid-row {
+        .shop-grid {
             display: grid;
-            gap: 18px;
-        }
-
-        .row-1 {
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            margin-bottom: 27px;
-        }
-
-        .row-2 {
             grid-template-columns: repeat(5, 1fr);
-            margin-bottom: 0;
+            gap: 20px;
         }
 
+        /* ── Realistic Glass Card ── */
         .product-card {
-            background: #ffffff;
-            border-radius: 10.8px;
+            position: relative;
+            grid-column: span 1;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 3.6px 10.8px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.4s ease, background 0.3s ease;
             display: flex;
             flex-direction: column;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.35) 0%,
+                rgba(255, 255, 255, 0.1) 40%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .product-card img,
+        .product-card .product-info {
+            position: relative;
+            z-index: 2;
         }
 
         .product-card:hover {
-            transform: translateY(-5.4px);
-            box-shadow: 0 10.8px 28.8px rgba(0, 0, 0, 0.10);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.10),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .product-card.card-big {
+            grid-column: span 2;
         }
 
         .product-card img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
-            background: #e9ecef;
+            background: rgba(233, 236, 239, 0.3);
             display: block;
+            mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+            mask-composite: add;
+            -webkit-mask-composite: source-over;
         }
 
-        .card-big img {
-            height: 252px;
+        .product-card.card-big img {
+            height: 280px;
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
         }
 
         .product-info {
-            padding: 14.4px 16.2px 18px;
+            padding: 16px 18px 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -357,18 +400,33 @@
 
         .product-info h3 {
             font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 14.4px;
+            font-size: 16px;
             font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 3.6px;
+            margin-bottom: 6px;
         }
 
-        .product-info .price {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 16.2px;
+        .price-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: nowrap;
+        }
+
+        .old-price {
+            font-size: 13px;
+            color: #888;
+            text-decoration: line-through;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .new-price {
+            font-size: 20px;
             font-weight: 700;
             color: #7E231E;
-            margin-bottom: 12.6px;
+            white-space: nowrap;
         }
 
         .btn-add-cart {
@@ -376,42 +434,91 @@
             background: #7E231E;
             color: #fff;
             border: none;
-            padding: 9px 0;
-            border-radius: 27px;
-            font-size: 11.7px;
+            padding: 10px 0;
+            border-radius: 30px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s ease;
             margin-top: auto;
             width: 100%;
-            text-align: center;
-            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(126, 35, 30, 0.25);
         }
 
         .btn-add-cart:hover {
             background: #5c1915;
             transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(126, 35, 30, 0.35);
         }
 
-        /* ───────────── SPACER SECTIONS ───────────── */
-        .spacer {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(0, 0, 0, 0.15);
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 1.8px;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        /* ───────────── ABOUT SECTION ───────────── */
+        .about {
+            padding: 80px 8% 60px;
             background: transparent;
         }
 
-        /* ──────────────────────────────────────────────────────
-                   RESPONSIVE BREAKPOINTS
-                   ────────────────────────────────────────────────────── */
+        .about-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
-        /* ── iPad / Large Tablet (768px – 992px) ── */
+        /* ── Glass container matching the header ── */
+        .about-glass {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 18px;
+            box-shadow: 0 9px 27px rgba(0, 0, 0, 0.18);
+            padding: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-glass:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            background: rgba(233, 236, 239, 0.5);
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-family: 'Eaglore', sans-serif;
+            font-size: 2.8rem;
+            color: #7E231E;
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .about-text p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #2d2d2d;
+            margin-bottom: 16px;
+        }
+
+        .about-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* ───────────── RESPONSIVE ───────────── */
+
         @media (max-width: 992px) {
             .container {
                 grid-template-columns: auto auto;
@@ -426,12 +533,13 @@
                 width: 100%;
                 flex-direction: column;
                 gap: 19.8px;
-                padding: 22.5px;
-                background: rgba(255, 255, 255, 0.12);
+                padding: 28px;
+                background: rgba(20, 20, 20, 0.85);
                 backdrop-filter: blur(18px);
                 -webkit-backdrop-filter: blur(18px);
-                border: 1px solid rgba(255, 255, 255, 0.18);
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 border-radius: 16.2px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-10.8px);
@@ -453,78 +561,36 @@
                 justify-self: end;
             }
 
-            /* ── Home on iPad ── */
             .home {
-                padding: 100px 25px 0;
-                height: 100vh;
-                min-height: 100vh;
-                overflow: hidden;
+                padding: 90px 40px 0;
+                height: 100svh;
             }
 
             .home-content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+                grid-template-columns: 1fr;
                 align-items: center;
                 gap: 20px;
                 height: 100%;
-                width: 100%;
             }
 
             .home-text {
+                align-self: center;
                 text-align: center;
-                align-items: center;
-                padding: 0 0 10px 0;
-                width: 100%;
-                order: 1;
+                max-width: 650px;
             }
-
             .home-text p {
-                max-width: 100%;
-            }
-
-            .home-text h1 {
-                font-size: 40px;
+                margin: auto;
             }
 
             .home-image {
-                order: 2;
+                align-self: end;
                 height: auto;
                 width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: flex-end;
-                align-self: end;
-                padding: 0;
-                margin-top: auto;
-                flex: 0 0 auto;
             }
-
             .home-image img {
-                max-width: 380px;
-                max-height: 45vh;
-                width: auto;
+                width: min(80%, 420px);
                 height: auto;
-            }
-
-            /* ── Shop on iPad ── */
-            .row-1 {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-                margin-bottom: 24px;
-            }
-            .card-big {
-                grid-column: span 2;
-            }
-            .card-big img {
-                height: 200px;
-            }
-            .row-2 {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
-            }
-            .product-card img {
-                height: 160px;
+                max-height: 48vh;
             }
 
             .ribbon-content span {
@@ -532,112 +598,100 @@
                 padding: 0 30px;
             }
 
-            .shop {
-                padding: 65px 0 48px;
+            .shop-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
             }
-            .shop-container {
-                padding: 0 16px;
+            .product-card.card-big {
+                grid-column: span 2;
             }
-            .shop-header {
-                margin-bottom: 32px;
+            .product-card {
+                grid-column: span 1;
             }
-            .shop-header h2 {
-                font-size: 28px;
+            .product-card.card-big img {
+                height: 220px;
             }
-            .btn-view-all {
-                font-size: 12.5px;
-                padding: 8px 18px;
+            .product-card img {
+                height: 160px;
             }
-            .product-info {
-                padding: 12px 14px 16px;
+
+            /* About Tablet */
+            .about-glass {
+                padding: 32px;
             }
-            .product-info h3 {
-                font-size: 13.5px;
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .product-info .price {
-                font-size: 15px;
-                margin-bottom: 10px;
+            .about-text {
+                text-align: center;
             }
-            .btn-add-cart {
-                padding: 8px 0;
-                font-size: 11px;
-                border-radius: 24px;
+            .about-image img {
+                max-width: 80%;
+                margin: 0 auto;
             }
         }
 
-        /* ── Small Tablet (600px – 768px) ── */
         @media (max-width: 768px) {
+            header {
+                padding: 0 16px;
+            }
+            .container {
+                padding: 14px 18px;
+                border-radius: 16px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+            .hamburger span {
+                height: 3px;
+            }
+            nav {
+                padding: 28px;
+                gap: 18px;
+            }
+            nav a {
+                font-size: 15px;
+                padding: 4px 0;
+            }
+
             .home {
-                padding: 92px 20px 0;
-                height: 100vh;
-                overflow: hidden;
+                padding: 85px 18px 0;
+                height: 100svh;
             }
-
             .home-content {
-                gap: 14px;
+                align-items: center;
+                gap: 16px;
             }
-
             .home-text {
-                padding: 0 0 6px 0;
+                text-align: center;
+                padding-bottom: 0;
             }
-
             .home-text h1 {
-                font-size: 34px;
+                font-size: clamp(2rem, 6vw, 2.4rem);
             }
-
             .home-text p {
-                font-size: 13.5px;
-            }
-
-            .home-image img {
-                max-width: 340px;
-                max-height: 42vh;
-            }
-
-            .shop {
-                padding: 58px 0 42px;
-            }
-            .shop-container {
-                padding: 0 14px;
-            }
-            .shop-header {
-                margin-bottom: 28px;
-            }
-            .shop-header h2 {
-                font-size: 26px;
-            }
-            .btn-view-all {
-                font-size: 12px;
-                padding: 7px 16px;
-            }
-            .row-1 {
-                gap: 14px;
-                margin-bottom: 20px;
-            }
-            .row-2 {
-                gap: 14px;
-            }
-            .product-card img {
-                height: 150px;
-            }
-            .card-big img {
-                height: 190px;
-            }
-            .product-info {
-                padding: 11px 12px 14px;
-            }
-            .product-info h3 {
-                font-size: 13px;
-            }
-            .product-info .price {
                 font-size: 14px;
-                margin-bottom: 9px;
+                max-width: 330px;
+                margin: 0 auto;
             }
-            .btn-add-cart {
-                padding: 7.5px 0;
-                font-size: 10.5px;
-                border-radius: 22px;
+            .home-image {
+                align-self: end;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
             }
+            .home-image img {
+                width: min(90%, 340px);
+                height: auto;
+                max-height: 55svh;
+            }
+
             .ribbon-content span {
                 font-size: 16px;
                 padding: 0 24px;
@@ -646,135 +700,118 @@
             .brand-ribbon {
                 padding: 11px 0;
             }
-        }
 
-        /* ── Mobile (≤600px) ── */
-        @media (max-width: 600px) {
-            /* ── Home on Mobile ── */
-            .home {
-                padding: 108px 16px 0;
-                height: 100vh;
-                overflow: hidden;
-            }
-
-            .home-content {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 4px;
-                height: 100%;
-                width: 100%;
-                padding-bottom: 0;
-            }
-
-            .home-text {
-                text-align: center;
-                align-items: center;
-                padding: 0;
-                width: 100%;
-                flex: 0 0 auto;
-                order: 1;
-                padding-top: 0;
-                gap: 6px;
-            }
-
-            .home-text h1 {
-                font-size: 28px;
-                margin-bottom: 0;
-                line-height: 1.15;
-            }
-
-            .home-text p {
-                font-size: 12.5px;
-                max-width: 100%;
-                line-height: 1.6;
-                margin-top: 0;
-            }
-
-            .home-image {
-                flex: 0 0 auto;
-                margin-top: auto;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: flex-end;
-                order: 2;
-                padding: 0;
-            }
-
-            .home-image img {
-                max-width: 88%;
-                max-height: 56vh;
-                width: auto;
-                height: auto;
-                display: block;
-                border-radius: 10.8px;
-                filter: drop-shadow(0 14.4px 28.8px rgba(0, 0, 0, 0.12));
-                object-fit: contain;
-            }
-
-            /* ── Shop on Mobile ── */
             .shop {
-                padding: 50px 0 32px;
+                padding: 60px 0 40px;
             }
             .shop-container {
-                padding: 0 12px;
-            }
-            .shop-header {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-                margin-bottom: 24px;
+                padding: 0 4%;
             }
             .shop-header h2 {
-                font-size: 22px;
+                font-size: 28px;
             }
             .btn-view-all {
-                font-size: 11px;
-                padding: 6px 15px;
-                border-width: 1.8px;
+                font-size: 13px;
+                padding: 8px 18px;
             }
-
-            /* Row 1: Big card full width, others 2-column */
-            .row-1 {
+            .shop-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 12px;
-                margin-bottom: 16px;
+                gap: 14px;
             }
-            .card-big {
+            .product-card.card-big {
                 grid-column: span 2;
             }
-            .card-big img {
-                height: 190px;
+            .product-card {
+                grid-column: span 1;
             }
-
-            /* Row 2: 2 columns */
-            .row-2 {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-                margin-bottom: 0;
+            .product-card.card-big img {
+                height: 200px;
             }
-
             .product-card img {
-                height: 130px;
+                height: 140px;
             }
-
             .product-info {
-                padding: 10px 11px 13px;
+                padding: 12px 14px 16px;
             }
             .product-info h3 {
-                font-size: 12px;
-                margin-bottom: 2px;
+                font-size: 14px;
             }
-            .product-info .price {
-                font-size: 13px;
-                margin-bottom: 8px;
+            .new-price {
+                font-size: 17px;
+            }
+            .old-price {
+                font-size: 12px;
+            }
+            .price-wrapper {
+                gap: 8px;
             }
             .btn-add-cart {
-                padding: 6.5px 0;
-                font-size: 9.5px;
-                border-radius: 20px;
+                padding: 8px 0;
+                font-size: 11px;
+            }
+
+            .about {
+                padding: 60px 4% 40px;
+            }
+            .about-glass {
+                padding: 24px;
+            }
+            .about-grid {
+                gap: 30px;
+            }
+            .about-text h2 {
+                font-size: 2.2rem;
+            }
+            .about-image img {
+                max-width: 100%;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 400px) {
+            header {
+                top: 12px;
+                padding: 0 10px;
+            }
+            .container {
+                padding: 10px 14px;
+                border-radius: 14px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            .hamburger {
+                width: 24px;
+                height: 18px;
+            }
+            .hamburger span {
+                height: 2.5px;
+            }
+            nav {
+                padding: 20px 16px;
+                gap: 14px;
+            }
+            nav a {
+                font-size: 13px;
+            }
+
+            .home {
+                padding: 78px 14px 0;
+                height: 100svh;
+            }
+            .home-content {
+                gap: 12px;
+            }
+            .home-text h1 {
+                font-size: 1.7rem;
+            }
+            .home-text p {
+                font-size: 13px;
+            }
+            .home-image img {
+                width: min(92%, 280px);
+                max-height: 50svh;
             }
 
             .ribbon-content span {
@@ -785,79 +822,67 @@
             .brand-ribbon {
                 padding: 8px 0;
             }
-        }
-
-        /* ── Small Mobile (≤400px) ── */
-        @media (max-width: 400px) {
-            .home {
-                padding: 100px 12px 0;
-            }
-
-            .home-text h1 {
-                font-size: 24px;
-            }
-
-            .home-text p {
-                font-size: 11.5px;
-            }
-
-            .home-image img {
-                max-width: 92%;
-                max-height: 52vh;
-            }
 
             .shop {
-                padding: 42px 0 28px;
-            }
-            .shop-container {
-                padding: 0 8px;
+                padding: 50px 0 30px;
             }
             .shop-header h2 {
-                font-size: 19px;
+                font-size: 22px;
             }
             .btn-view-all {
-                font-size: 10px;
-                padding: 5px 12px;
+                font-size: 11px;
+                padding: 6px 14px;
             }
-            .row-1 {
-                gap: 10px;
-                margin-bottom: 14px;
-            }
-            .row-2 {
+            .shop-grid {
                 gap: 10px;
             }
-            .card-big img {
+            .product-card.card-big img {
                 height: 160px;
             }
             .product-card img {
                 height: 110px;
             }
             .product-info {
-                padding: 8px 9px 11px;
+                padding: 10px 10px 12px;
             }
             .product-info h3 {
+                font-size: 12px;
+            }
+            .new-price {
+                font-size: 15px;
+            }
+            .old-price {
                 font-size: 11px;
             }
-            .product-info .price {
-                font-size: 11.5px;
-                margin-bottom: 6px;
+            .price-wrapper {
+                gap: 6px;
             }
             .btn-add-cart {
-                padding: 5.5px 0;
-                font-size: 8.5px;
-                border-radius: 16px;
-            }
-            .shop-header {
-                gap: 8px;
-                margin-bottom: 18px;
-            }
-            .ribbon-content span {
-                font-size: 11px;
-                padding: 0 10px;
-                letter-spacing: 0.8px;
-            }
-            .brand-ribbon {
                 padding: 6px 0;
+                font-size: 10px;
+            }
+
+            .about {
+                padding: 50px 4% 30px;
+            }
+            .about-glass {
+                padding: 16px;
+                border-radius: 14px;
+            }
+            .about-grid {
+                gap: 20px;
+            }
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+            .about-text p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            .about-image img {
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                border-radius: 8px;
             }
         }
     </style>
@@ -892,19 +917,21 @@
     </header>
 
     <!-- ─── HOME ─── -->
-    <section id="home" class="home">
+    <section class="home" id="home">
         <div class="home-content">
+
             <div class="home-text">
                 <h1>Welcome to Laraib's Digital Store</h1>
                 <p>
-                    We're happy to have you here. Explore our collection of digital products
-                    and find the right solution for your needs. We're here to help you find
-                    what you're looking for.
+                    We're happy to have you here. Explore our collection of digital
+                    products and find the right solution for your needs.
                 </p>
             </div>
+
             <div class="home-image">
-                <img src="images/geek.png" alt="Home Hero" loading="lazy" />
+                <img src="images/geek.png" alt="Hero Image">
             </div>
+
         </div>
     </section>
 
@@ -928,101 +955,194 @@
         </div>
     </section>
 
-    <!-- ─── SHOP ─── -->
-    <section id="shop" class="shop">
+    <!-- ─── SHOP SECTION ─── -->
+    <section class="shop" id="shop">
         <div class="shop-container">
             <div class="shop-header">
                 <h2>Featured Products</h2>
                 <a href="shopviewall.html" class="btn-view-all">View All →</a>
             </div>
 
-            <!-- ROW 1: 1 Big + 3 Small -->
-            <div class="shop-grid-row row-1">
+            <div class="shop-grid">
+
+                <!-- Card 1 (Big) -->
                 <div class="product-card card-big">
                     <img src="images/product1.jpg" alt="Product 1" loading="lazy" />
                     <div class="product-info">
                         <h3>Premium Bundle</h3>
-                        <p class="price">$29.99</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 4,500</span>
+                            <span class="new-price">PKR 2,999</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Premium Bundle">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 2 -->
                 <div class="product-card">
                     <img src="images/product2.jpg" alt="Product 2" loading="lazy" />
                     <div class="product-info">
                         <h3>Digital Planner</h3>
-                        <p class="price">$12.99</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 2,500</span>
+                            <span class="new-price">PKR 1,299</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Digital Planner">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 3 -->
                 <div class="product-card">
                     <img src="images/product3.jpg" alt="Product 3" loading="lazy" />
                     <div class="product-info">
                         <h3>E‑book Pack</h3>
-                        <p class="price">$8.49</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 1,200</span>
+                            <span class="new-price">PKR 849</span>
+                        </div>
                         <button class="btn-add-cart" data-product="E-book Pack">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 4 -->
                 <div class="product-card">
                     <img src="images/product4.jpg" alt="Product 4" loading="lazy" />
                     <div class="product-info">
                         <h3>Mockup Set</h3>
-                        <p class="price">$19.00</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 3,200</span>
+                            <span class="new-price">PKR 1,900</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Mockup Set">Buy Now</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- ROW 2: 5 Equal Cards -->
-            <div class="shop-grid-row row-2">
+                <!-- Card 5 -->
                 <div class="product-card">
                     <img src="images/product5.jpg" alt="Product 5" loading="lazy" />
                     <div class="product-info">
                         <h3>Icon Pack</h3>
-                        <p class="price">$5.99</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 800</span>
+                            <span class="new-price">PKR 599</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Icon Pack">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 6 -->
                 <div class="product-card">
                     <img src="images/product6.jpg" alt="Product 6" loading="lazy" />
                     <div class="product-info">
                         <h3>Social Templates</h3>
-                        <p class="price">$14.50</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 2,200</span>
+                            <span class="new-price">PKR 1,450</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Social Templates">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 7 -->
                 <div class="product-card">
                     <img src="images/product7.jpg" alt="Product 7" loading="lazy" />
                     <div class="product-info">
                         <h3>Font Bundle</h3>
-                        <p class="price">$22.00</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 3,500</span>
+                            <span class="new-price">PKR 2,200</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Font Bundle">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 8 -->
                 <div class="product-card">
                     <img src="images/product8.jpg" alt="Product 8" loading="lazy" />
                     <div class="product-info">
                         <h3>Stock Photos</h3>
-                        <p class="price">$9.99</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 1,500</span>
+                            <span class="new-price">PKR 999</span>
+                        </div>
                         <button class="btn-add-cart" data-product="Stock Photos">Buy Now</button>
                     </div>
                 </div>
+
+                <!-- Card 9 -->
                 <div class="product-card">
                     <img src="images/product9.jpg" alt="Product 9" loading="lazy" />
                     <div class="product-info">
                         <h3>UI Kit</h3>
-                        <p class="price">$34.00</p>
+                        <div class="price-wrapper">
+                            <span class="old-price">PKR 5,500</span>
+                            <span class="new-price">PKR 3,400</span>
+                        </div>
                         <button class="btn-add-cart" data-product="UI Kit">Buy Now</button>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ABOUT SECTION ─── -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-glass">
+                <div class="about-grid">
+
+                    <!-- Image Column -->
+                    <div class="about-image">
+                        <img 
+                            src="https://placehold.co/600x400/e9ecef/7E231E?text=About+Us+Image" 
+                            alt="About Laraib's Digital Store" 
+                            loading="lazy"
+                        />
+                    </div>
+
+                    <!-- Text Column -->
+                    <div class="about-text">
+                        <h2>About Laraib's Digital Store</h2>
+                        <p>
+                            Laraib's Digital Store (LDS) was founded with a simple mission: to provide 
+                            high-quality digital products that make work, learning, and creativity easier 
+                            for everyone. We believe that the right tools can transform the way people 
+                            work and create.
+                        </p>
+                        <p>
+                            Our collection is carefully curated to include templates, planners, resources, 
+                            and bundles that are designed with simplicity and quality in mind. Whether 
+                            you're a freelancer, student, or business owner, we're here to help you succeed.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ─── SPACER SECTIONS ─── -->
-    <section id="about" class="spacer">About</section>
+    <!-- Removed the old spacer for about, keeping others as placeholders -->
     <section id="services" class="spacer">Services</section>
     <section id="portfolio" class="spacer">Portfolio</section>
     <section id="contact" class="spacer">Contact</section>
+
+    <style>
+        /* ───────────── SPACER SECTIONS ───────────── */
+        .spacer {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.15);
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1.8px;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            background: transparent;
+        }
+    </style>
 
     <!-- ─── SCRIPT ─── -->
     <script>
