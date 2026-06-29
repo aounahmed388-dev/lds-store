@@ -3,13 +3,54 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LDS – Laraib's Digital Store</title>
+    <meta name="robots" content="index, follow" />
 
-    <!-- ─── FONTS ─── -->
+    <!-- ─── SEO & META ─── -->
+    <title>LDS – Laraib's Digital Store | Premium Digital Products</title>
+<link rel="icon" type="image/svg+xml" href="https://unpkg.com/lucide-static/icons/shopping-bag.svg">
+    <meta name="description" content="Laraib's Digital Store offers premium digital products – templates, planners, bundles, UI kits, and more. Quality resources for professionals and creatives." />
+    <link rel="canonical" href="https://www.laraibsdigital.com/" />
+
+    <!-- ─── OPEN GRAPH / SOCIAL ─── -->
+    <meta property="og:title" content="Laraib's Digital Store – Premium Digital Products" />
+    <meta property="og:description" content="Explore our curated collection of digital tools, templates, and resources designed to empower your work and creativity." />
+    <meta property="og:image" content="https://www.laraibsdigital.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://www.laraibsdigital.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- ─── TWITTER CARDS ─── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Laraib's Digital Store – Premium Digital Products" />
+    <meta name="twitter:description" content="Premium digital tools, templates, and resources for professionals and creatives." />
+    <meta name="twitter:image" content="https://www.laraibsdigital.com/images/og-image.jpg" />
+
+    <!-- ─── FONTS (with display=swap) ─── -->
     <link href="https://fonts.cdnfonts.com/css/eaglore" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
+        /* ───────────── CSS CUSTOM PROPERTIES ───────────── */
+        :root {
+            --brand-red: #7E231E;
+            --brand-red-dark: #5c1915;
+            --text-dark: #1a1a1a;
+            --text-muted: #555;
+            --white: #ffffff;
+            --bg-light: #f9f9f9;
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-red: 0 4px 12px rgba(126, 35, 30, 0.2);
+            --shadow-red-hover: 0 4px 12px rgba(126, 35, 30, 0.3);
+            --radius-card: 16px;
+            --radius-section: 18px;
+            --radius-btn: 30px;
+            --font-heading: 'Eaglore', Arial, Helvetica, sans-serif;
+            --font-body: 'Open Sans', Arial, Helvetica, sans-serif;
+            --transition: 0.3s ease;
+            --max-width: 1300px;
+            --max-width-hero: 1400px;
+        }
+
         /* ───────────── RESET ───────────── */
         * {
             margin: 0;
@@ -24,9 +65,15 @@
         body {
             overflow-x: hidden;
             min-height: 100vh;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            background: #ffffff;
+            font-family: var(--font-body);
+            background: var(--white);
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── FOCUS VISIBLE (accessibility) ─── */
+        :focus-visible {
+            outline: 2px solid var(--brand-red);
+            outline-offset: 2px;
         }
 
         /* ───────────── FADE IN EFFECT ───────────── */
@@ -58,20 +105,18 @@
             grid-template-columns: auto 1fr auto;
             align-items: center;
             padding: 14px 20px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.92);
             border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 18px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border-radius: var(--radius-section);
+            box-shadow: var(--shadow-soft);
         }
 
         .logo {
-            color: #7E231E;
+            color: var(--brand-red);
             font-size: 21.6px;
             font-weight: bold;
             text-decoration: none;
-            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-family: var(--font-heading);
         }
 
         nav {
@@ -82,13 +127,13 @@
         }
 
         nav a {
-            color: #1a1a1a;
+            color: var(--text-dark);
             text-decoration: none;
             font-size: 13.5px;
             font-weight: 600;
             position: relative;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            transition: color 0.3s;
+            font-family: var(--font-body);
+            transition: color var(--transition);
         }
 
         nav a::after {
@@ -98,12 +143,12 @@
             bottom: -5.4px;
             width: 0;
             height: 1.8px;
-            background: #7E231E;
+            background: var(--brand-red);
             transition: 0.35s;
         }
 
         nav a:hover {
-            color: #7E231E;
+            color: var(--brand-red);
         }
 
         nav a:hover::after {
@@ -113,19 +158,23 @@
         .cta {
             justify-self: end;
             text-decoration: none;
-            background: #7E231E;
-            color: #fff;
+            background: var(--brand-red);
+            color: var(--white);
             padding: 9px 19.8px;
             border-radius: 36px;
             font-size: 12.6px;
             font-weight: 700;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            transition: background 0.3s, box-shadow 0.3s;
+            font-family: var(--font-body);
+            transition: background var(--transition), box-shadow var(--transition);
         }
 
         .cta:hover {
-            background: #5c1915;
-            box-shadow: 0 9px 22.5px rgba(126, 35, 30, 0.35);
+            background: var(--brand-red-dark);
+            box-shadow: var(--shadow-red-hover);
+        }
+
+        .cta:active {
+            transform: scale(0.97);
         }
 
         .hamburger {
@@ -135,12 +184,15 @@
             cursor: pointer;
             flex-direction: column;
             justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .hamburger span {
             height: 2.7px;
             width: 100%;
-            background: #7E231E;
+            background: var(--brand-red);
             border-radius: 18px;
             transition: 0.35s;
         }
@@ -157,28 +209,28 @@
             transform: translateY(-8.1px) rotate(-45deg);
         }
 
-        /* ───────────── HOME / HERO SECTION ───────────── */
+        /* ───────────── HOME / HERO ───────────── */
         .home {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             min-height: 100vh;
             min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 8% 60px;
+            padding: 100px 0 0 0;
             position: relative;
             z-index: 1;
-            background: #ffffff;
+            background: var(--white);
         }
 
         .home-content {
-            max-width: 1400px;
+            max-width: var(--max-width-hero);
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
-            gap: 60px;
-            position: relative;
-            z-index: 1;
+            gap: 20px;
+            padding: 0 8%;
+            flex: 1 0 auto;
         }
 
         .home-text {
@@ -188,82 +240,27 @@
         }
 
         .home-text h1 {
-            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+            font-family: var(--font-heading);
             font-size: clamp(3.2rem, 5.5vw, 5.8rem);
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: #1a1a1a;
+            color: var(--brand-red);
             line-height: 1.05;
         }
 
-        .home-text h1 .accent {
-            color: #7E231E;
-        }
-
         .home-text .sub-headline {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            font-family: var(--font-body);
             font-size: clamp(1rem, 1.2vw, 1.2rem);
             font-weight: 300;
-            color: #555;
+            color: var(--text-muted);
             max-width: 520px;
             line-height: 1.8;
             letter-spacing: 0.3px;
         }
 
-        .home-cta-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 8px;
-        }
-
-        .btn-primary {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            background: #7E231E;
-            color: #fff;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-            box-shadow: 0 6px 24px rgba(126, 35, 30, 0.3);
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background: #5c1915;
-            box-shadow: 0 10px 32px rgba(126, 35, 30, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            background: transparent;
-            color: #7E231E;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 2px solid #7E231E;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
-            display: inline-block;
-        }
-
-        .btn-secondary:hover {
-            background: #7E231E;
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(126, 35, 30, 0.2);
-            transform: translateY(-2px);
-        }
-
         .home-image {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             width: 100%;
         }
@@ -274,27 +271,34 @@
             height: auto;
             display: block;
             object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.06));
-            border-radius: 16px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
+            border-radius: var(--radius-card);
         }
 
-        /* ───────────── BRAND RIBBON ───────────── */
-        .brand-ribbon {
-            background: #7E231E;
-            color: #fff;
+        /* ─── DESKTOP-ONLY IMAGE SHIFT ─── */
+        @media (min-width: 992px) {
+            .home-image {
+                justify-content: flex-end;
+            }
+        }
+
+        /* ─── RED STRIP (BRAND RIBBON) ─── */
+        .home .brand-ribbon {
+            flex-shrink: 0;
+            width: 100%;
+            background: var(--brand-red);
+            color: var(--white);
             padding: 14px 0;
             overflow: hidden;
             border-top: 2px solid rgba(255, 255, 255, 0.08);
             border-bottom: 2px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 20px rgba(126, 35, 30, 0.25);
-            position: relative;
-            z-index: 1;
-            will-change: transform;
+            box-shadow: 0 -4px 20px rgba(126, 35, 30, 0.15);
+            margin-top: 30px;
             transform: translateZ(0);
             backface-visibility: hidden;
         }
 
-        .ribbon-track {
+        .home .brand-ribbon .ribbon-track {
             display: flex;
             white-space: nowrap;
             width: max-content;
@@ -304,12 +308,12 @@
             animation: scroll-ribbon 28s linear infinite;
         }
 
-        .ribbon-content {
+        .home .brand-ribbon .ribbon-content {
             display: flex;
         }
 
-        .ribbon-content span {
-            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
+        .home .brand-ribbon .ribbon-content span {
+            font-family: var(--font-heading);
             font-size: 22px;
             font-weight: 400;
             letter-spacing: 3px;
@@ -318,36 +322,32 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: #fff;
+            color: var(--white);
         }
 
-        .ribbon-content span::before {
+        .home .brand-ribbon .ribbon-content span::before {
             content: "✦";
             font-size: 16px;
             opacity: 0.5;
-            color: #fff;
+            color: var(--white);
         }
 
         @keyframes scroll-ribbon {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        /* ───────────── SHOP SECTION ───────────── */
+        /* ───────────── SHOP ───────────── */
         .shop {
             padding: 80px 0 60px;
-            background: #ffffff;
+            background: var(--white);
             position: relative;
             z-index: 1;
         }
 
         .shop-container {
             width: 100%;
-            max-width: 1300px;
+            max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 8%;
         }
@@ -360,28 +360,32 @@
         }
 
         .shop-header h2 {
-            font-family: 'Eaglore', Arial, Helvetica, sans-serif;
-            color: #1a1a1a;
+            font-family: var(--font-heading);
+            color: var(--brand-red);
             font-size: 36px;
             font-weight: 400;
         }
 
         .btn-view-all {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            color: #7E231E;
+            font-family: var(--font-body);
+            color: var(--brand-red);
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
             padding: 10px 24px;
-            border: 2px solid #7E231E;
-            border-radius: 30px;
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--brand-red);
+            border-radius: var(--radius-btn);
+            transition: background var(--transition), color var(--transition), box-shadow var(--transition);
         }
 
         .btn-view-all:hover {
-            background: #7E231E;
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(126, 35, 30, 0.25);
+            background: var(--brand-red);
+            color: var(--white);
+            box-shadow: var(--shadow-red);
+        }
+
+        .btn-view-all:active {
+            transform: scale(0.97);
         }
 
         .shop-grid {
@@ -391,45 +395,20 @@
         }
 
         .product-card {
-            position: relative;
             grid-column: span 1;
-            background: #ffffff;
+            background: var(--white);
             border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
+            border-radius: var(--radius-card);
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            transition: transform 0.2s ease, box-shadow 0.3s ease;
-            will-change: transform;
-            perspective: 800px;
-            transform-style: preserve-3d;
+            transition: transform var(--transition), box-shadow var(--transition);
         }
 
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 55%;
-            background: linear-gradient(135deg,
-                    rgba(0, 0, 0, 0.02) 0%,
-                    rgba(0, 0, 0, 0) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .product-card img,
-        .product-card .product-info {
-            position: relative;
-            z-index: 2;
-        }
-
-        .product-card.card-big {
-            grid-column: span 2;
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .product-card img {
@@ -437,11 +416,7 @@
             height: 200px;
             object-fit: cover;
             display: block;
-            background: #f5f5f5;
-        }
-
-        .product-card.card-big img {
-            height: 280px;
+            background: var(--bg-light);
         }
 
         .product-info {
@@ -452,10 +427,10 @@
         }
 
         .product-info h3 {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+            font-family: var(--font-body);
             font-size: 16px;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--brand-red);
             margin-bottom: 6px;
         }
 
@@ -478,62 +453,89 @@
         .new-price {
             font-size: 20px;
             font-weight: 700;
-            color: #7E231E;
+            color: var(--brand-red);
             white-space: nowrap;
         }
 
         .btn-add-cart {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            background: #7E231E;
-            color: #fff;
+            font-family: var(--font-body);
+            background: var(--brand-red);
+            color: var(--white);
             border: none;
             padding: 10px 0;
-            border-radius: 30px;
+            border-radius: var(--radius-btn);
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             margin-top: auto;
             width: 100%;
-            box-shadow: 0 4px 12px rgba(126, 35, 30, 0.25);
-            transition: background 0.3s, transform 0.2s;
+            box-shadow: var(--shadow-red);
+            transition: background var(--transition), transform 0.2s;
         }
 
         .btn-add-cart:hover {
-            background: #5c1915;
+            background: var(--brand-red-dark);
             transform: scale(1.02);
         }
 
-        /* ───────────── TERMS SECTION ───────────── */
+        .btn-add-cart:active {
+            transform: scale(0.97);
+        }
+
+        .btn-add-cart:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ───────────── TERMS ───────────── */
         .terms {
             padding: 60px 8%;
             position: relative;
             z-index: 1;
-            background: #ffffff;
+            background: var(--white);
+        }
+
+        .terms-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: url('images/background.jpg') center/cover no-repeat;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .terms-bg-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .terms-container {
-            max-width: 1300px;
+            max-width: var(--max-width);
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .terms-glass {
-            background: #f9f9f9;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            border-radius: 18px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--radius-section);
             padding: 40px;
         }
 
         .terms-glass h2 {
-            font-family: 'Eaglore', sans-serif;
-            color: #1a1a1a;
+            font-family: var(--font-heading);
+            color: var(--brand-red);
             font-size: 2.5rem;
             font-weight: 400;
             margin-bottom: 12px;
         }
 
         .terms-intro {
-            color: #555;
+            color: var(--text-muted);
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 28px;
@@ -547,21 +549,22 @@
         }
 
         .term-item {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            border-radius: 14px;
-            padding: 24px 28px;
-            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            background: var(--white);
+            border: 1px solid var(--brand-red);
+            border-radius: var(--radius-card);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-soft);
+            transition: transform var(--transition), box-shadow var(--transition);
         }
 
         .term-item:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-hover);
         }
 
         .term-item h3 {
-            font-family: 'Open Sans', sans-serif;
-            color: #7E231E;
+            font-family: var(--font-body);
+            color: var(--brand-red);
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -574,27 +577,111 @@
             width: 28px;
             height: 28px;
             flex-shrink: 0;
-            fill: #7E231E;
+            fill: var(--brand-red);
         }
 
         .term-item p {
-            color: #2d2d2d;
+            color: var(--text-dark);
             font-size: 0.95rem;
             line-height: 1.7;
             margin: 0;
         }
 
-        /* ───────────── REVIEWS SECTION ───────────── */
+        /* ───────────── ABOUT ───────────── */
+        .about {
+            padding: 60px 8%;
+            position: relative;
+            z-index: 1;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .about-glass {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--radius-section);
+            padding: 40px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-heading);
+            color: var(--brand-red);
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .about-text p strong {
+            color: var(--brand-red);
+            font-weight: 700;
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .about-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .about-image-item {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            background: var(--bg-light);
+        }
+
+        .about-image-item img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+            transition: transform var(--transition);
+        }
+
+        .about-image-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ───────────── REVIEWS ───────────── */
         .reviews {
             padding: 60px 8%;
             position: relative;
             z-index: 1;
-            background: #ffffff;
+            background: var(--white);
             overflow: hidden;
         }
 
         .reviews-container {
-            max-width: 1300px;
+            max-width: var(--max-width);
             margin: 0 auto;
         }
 
@@ -606,29 +693,33 @@
         }
 
         .reviews-header h2 {
-            font-family: 'Eaglore', sans-serif;
-            color: #1a1a1a;
+            font-family: var(--font-heading);
+            color: var(--brand-red);
             font-size: 2.5rem;
             font-weight: 400;
         }
 
         .btn-add-review {
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            background: #7E231E;
-            color: #fff;
+            font-family: var(--font-body);
+            background: var(--brand-red);
+            color: var(--white);
             border: none;
             padding: 10px 24px;
-            border-radius: 30px;
+            border-radius: var(--radius-btn);
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 12px rgba(126, 35, 30, 0.25);
+            transition: background var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-red);
         }
 
         .btn-add-review:hover {
-            background: #5c1915;
-            box-shadow: 0 8px 24px rgba(126, 35, 30, 0.35);
+            background: var(--brand-red-dark);
+            box-shadow: var(--shadow-red-hover);
+        }
+
+        .btn-add-review:active {
+            transform: scale(0.97);
         }
 
         .review-track-container {
@@ -643,7 +734,7 @@
             display: flex;
             gap: 24px;
             width: max-content;
-            animation: scroll-reviews 35s linear infinite;
+            animation: scroll-reviews 40s linear infinite;
             will-change: transform;
             transform: translateZ(0);
             backface-visibility: hidden;
@@ -652,19 +743,19 @@
         .review-card {
             flex: 0 0 300px;
             padding: 24px;
-            background: #ffffff;
+            background: var(--white);
             border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
             gap: 6px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition), box-shadow var(--transition);
         }
 
         .review-card:hover {
             transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-hover);
         }
 
         .review-card .stars {
@@ -675,12 +766,12 @@
 
         .review-card .name {
             font-weight: 700;
-            color: #1a1a1a;
+            color: var(--text-dark);
             font-size: 16px;
         }
 
         .review-card .comment {
-            color: #2d2d2d;
+            color: var(--text-dark);
             font-size: 14px;
             line-height: 1.6;
             margin-top: 4px;
@@ -694,21 +785,15 @@
         }
 
         @keyframes scroll-reviews {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* ───────────── MODAL ───────────── */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 10000;
             display: none;
             justify-content: center;
@@ -721,26 +806,20 @@
         }
 
         .modal-box {
-            background: #ffffff;
+            background: var(--white);
             border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 24px;
             padding: 40px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             position: relative;
             animation: modalSlideIn 0.3s ease;
         }
 
         @keyframes modalSlideIn {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-close {
@@ -752,16 +831,16 @@
             color: #888;
             background: none;
             border: none;
-            transition: color 0.3s;
+            transition: color var(--transition);
         }
 
         .modal-close:hover {
-            color: #1a1a1a;
+            color: var(--text-dark);
         }
 
         .modal-box h3 {
-            font-family: 'Eaglore', sans-serif;
-            color: #7E231E;
+            font-family: var(--font-heading);
+            color: var(--brand-red);
             font-size: 28px;
             font-weight: 400;
             margin-bottom: 20px;
@@ -786,18 +865,18 @@
             padding: 12px 16px;
             border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 12px;
-            background: #f9f9f9;
-            font-family: 'Open Sans', sans-serif;
+            background: var(--bg-light);
+            font-family: var(--font-body);
             font-size: 14px;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            color: #1a1a1a;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            color: var(--text-dark);
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #7E231E;
+            border-color: var(--brand-red);
             box-shadow: 0 0 0 3px rgba(126, 35, 30, 0.08);
         }
 
@@ -812,22 +891,26 @@
         }
 
         .btn-submit-review {
-            background: #7E231E;
-            color: #fff;
+            background: var(--brand-red);
+            color: var(--white);
             border: none;
             padding: 12px 24px;
-            border-radius: 30px;
+            border-radius: var(--radius-btn);
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: background 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 12px rgba(126, 35, 30, 0.25);
+            transition: background var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-red);
         }
 
         .btn-submit-review:hover {
-            background: #5c1915;
-            box-shadow: 0 8px 24px rgba(126, 35, 30, 0.35);
+            background: var(--brand-red-dark);
+            box-shadow: var(--shadow-red-hover);
+        }
+
+        .btn-submit-review:active {
+            transform: scale(0.97);
         }
 
         .btn-submit-review:disabled {
@@ -852,16 +935,16 @@
             display: block;
         }
 
-        /* ───────────── CONTACT SECTION ───────────── */
+        /* ───────────── CONTACT ───────────── */
         .contact {
             padding: 60px 8%;
             position: relative;
             z-index: 1;
-            background: #ffffff;
+            background: var(--white);
         }
 
         .contact-container {
-            max-width: 1300px;
+            max-width: var(--max-width);
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -869,16 +952,15 @@
         }
 
         .contact-glass {
-            background: #f9f9f9;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            border-radius: 18px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--radius-section);
             padding: 40px;
         }
 
         .contact-glass h2 {
-            font-family: 'Eaglore', sans-serif;
-            color: #1a1a1a;
+            font-family: var(--font-heading);
+            color: var(--brand-red);
             font-size: 2.5rem;
             font-weight: 400;
             margin-bottom: 24px;
@@ -894,47 +976,51 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            color: #2d2d2d;
+            color: var(--text-dark);
             font-size: 15px;
         }
 
         .contact-detail-item svg {
             width: 24px;
             height: 24px;
-            fill: #7E231E;
+            fill: var(--brand-red);
             flex-shrink: 0;
         }
 
         .btn-submit {
-            background: #7E231E;
-            color: #fff;
+            background: var(--brand-red);
+            color: var(--white);
             border: none;
             padding: 12px 24px;
-            border-radius: 30px;
+            border-radius: var(--radius-btn);
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: background 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 12px rgba(126, 35, 30, 0.25);
+            transition: background var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-red);
         }
 
         .btn-submit:hover {
-            background: #5c1915;
-            box-shadow: 0 8px 24px rgba(126, 35, 30, 0.35);
+            background: var(--brand-red-dark);
+            box-shadow: var(--shadow-red-hover);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.97);
         }
 
         /* ───────────── FOOTER ───────────── */
         footer {
-            background: #7E231E;
-            color: #fff;
+            background: var(--brand-red);
+            color: var(--white);
             padding: 28px 8% 18px;
             position: relative;
             z-index: 1;
         }
 
         .footer-content {
-            max-width: 1300px;
+            max-width: var(--max-width);
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -944,7 +1030,7 @@
         }
 
         .footer-brand h3 {
-            font-family: 'Eaglore', sans-serif;
+            font-family: var(--font-heading);
             font-size: 22px;
             font-weight: 400;
             letter-spacing: 1px;
@@ -961,7 +1047,7 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 400;
-            transition: opacity 0.3s;
+            transition: opacity var(--transition);
         }
 
         .footer-links a:hover {
@@ -970,7 +1056,7 @@
         }
 
         .footer-bottom {
-            max-width: 1300px;
+            max-width: var(--max-width);
             margin: 0 auto;
             border-top: 1px solid rgba(255, 255, 255, 0.12);
             padding-top: 14px;
@@ -982,6 +1068,11 @@
         }
 
         /* ───────────── RESPONSIVE ───────────── */
+        @media (min-width: 992px) {
+            body {
+                zoom: 0.9;
+            }
+        }
 
         @media (max-width: 992px) {
             .container {
@@ -998,12 +1089,10 @@
                 flex-direction: column;
                 gap: 19.8px;
                 padding: 28px;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
+                background: var(--white);
                 border: 1px solid rgba(0, 0, 0, 0.06);
                 border-radius: 16.2px;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+                box-shadow: var(--shadow-hover);
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-10.8px);
@@ -1011,7 +1100,7 @@
             }
 
             nav a {
-                color: #1a1a1a;
+                color: var(--text-dark);
             }
 
             nav.active {
@@ -1030,14 +1119,15 @@
             }
 
             .home {
-                padding: 100px 6% 50px;
+                padding: 100px 0 0 0;
                 min-height: 90svh;
             }
 
             .home-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 30px;
                 text-align: center;
+                padding: 0 6%;
             }
 
             .home-text {
@@ -1048,7 +1138,7 @@
                 max-width: 100%;
             }
 
-            .home-cta-group {
+            .home-image {
                 justify-content: center;
             }
 
@@ -1056,7 +1146,7 @@
                 max-width: 420px;
             }
 
-            .ribbon-content span {
+            .home .brand-ribbon .ribbon-content span {
                 font-size: 18px;
                 padding: 0 30px;
             }
@@ -1065,21 +1155,27 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 18px;
             }
-            .product-card.card-big {
-                grid-column: span 2;
-            }
-            .product-card {
-                grid-column: span 1;
-            }
-            .product-card.card-big img {
-                height: 220px;
-            }
+
             .product-card img {
-                height: 160px;
+                height: 180px;
             }
 
             .terms-intro {
                 max-width: 100%;
+            }
+            .terms-grid {
+                gap: 18px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-text {
+                text-align: center;
+            }
+            .about-images {
+                max-width: 320px;
             }
 
             .contact-container {
@@ -1103,7 +1199,7 @@
             }
             .container {
                 padding: 14px 18px;
-                border-radius: 16px;
+                border-radius: var(--radius-card);
             }
             .logo {
                 font-size: 24px;
@@ -1125,12 +1221,13 @@
             }
 
             .home {
-                padding: 90px 5% 40px;
+                padding: 90px 0 0 0;
                 min-height: 85svh;
             }
 
             .home-content {
-                gap: 30px;
+                gap: 20px;
+                padding: 0 5%;
             }
 
             .home-text h1 {
@@ -1145,26 +1242,12 @@
                 max-width: 320px;
             }
 
-            .home-cta-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 280px;
-                text-align: center;
-                padding: 12px 28px;
-                font-size: 14px;
-            }
-
-            .ribbon-content span {
+            .home .brand-ribbon .ribbon-content span {
                 font-size: 16px;
                 padding: 0 24px;
                 letter-spacing: 2px;
             }
-            .brand-ribbon {
+            .home .brand-ribbon {
                 padding: 11px 0;
             }
 
@@ -1185,17 +1268,8 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 14px;
             }
-            .product-card.card-big {
-                grid-column: span 2;
-            }
-            .product-card {
-                grid-column: span 1;
-            }
-            .product-card.card-big img {
-                height: 200px;
-            }
             .product-card img {
-                height: 140px;
+                height: 160px;
             }
             .product-info {
                 padding: 12px 14px 16px;
@@ -1238,6 +1312,19 @@
             }
             .term-item p {
                 font-size: 0.9rem;
+            }
+
+            .about {
+                padding: 40px 4%;
+            }
+            .about-glass {
+                padding: 24px;
+            }
+            .about-text h2 {
+                font-size: 2.2rem;
+            }
+            .about-images {
+                max-width: 280px;
             }
 
             .reviews {
@@ -1313,7 +1400,7 @@
             }
 
             .home {
-                padding: 80px 4% 30px;
+                padding: 80px 0 0 0;
                 min-height: 80svh;
             }
 
@@ -1329,19 +1416,12 @@
                 max-width: 240px;
             }
 
-            .btn-primary,
-            .btn-secondary {
-                font-size: 13px;
-                padding: 10px 20px;
-                max-width: 220px;
-            }
-
-            .ribbon-content span {
+            .home .brand-ribbon .ribbon-content span {
                 font-size: 13px;
                 padding: 0 14px;
                 letter-spacing: 1px;
             }
-            .brand-ribbon {
+            .home .brand-ribbon {
                 padding: 8px 0;
             }
 
@@ -1358,11 +1438,8 @@
             .shop-grid {
                 gap: 10px;
             }
-            .product-card.card-big img {
-                height: 160px;
-            }
             .product-card img {
-                height: 110px;
+                height: 130px;
             }
             .product-info {
                 padding: 10px 10px 12px;
@@ -1401,6 +1478,19 @@
             }
             .term-item p {
                 font-size: 0.85rem;
+            }
+
+            .about-glass {
+                padding: 16px;
+            }
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+            .about-text p {
+                font-size: 0.9rem;
+            }
+            .about-images {
+                max-width: 220px;
             }
 
             .reviews-header h2 {
@@ -1455,6 +1545,175 @@
             }
         }
     </style>
+
+    <!-- ─── STRUCTURED DATA (JSON-LD) ─── -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Laraib's Digital Store",
+            "url": "https://www.laraibsdigital.com/",
+            "description": "Premium digital products including templates, planners, bundles, UI kits, and more for professionals and creatives."
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Premium Bundle",
+                        "description": "All-in-one digital bundle with templates, planners, and resources.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "2999",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Digital Planner",
+                        "description": "Comprehensive digital planner for productivity and goal setting.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "1299",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                        "@type": "Product",
+                        "name": "E‑book Pack",
+                        "description": "Collection of high-quality e-books on various topics.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "849",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Mockup Set",
+                        "description": "Professional mockup templates for branding and presentations.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "1900",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Icon Pack",
+                        "description": "Modern icon set for web and mobile projects.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "599",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 6,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Social Templates",
+                        "description": "Ready-to-use social media templates for all platforms.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "1450",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 7,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Font Bundle",
+                        "description": "Curated font collection for designers and creatives.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "2200",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 8,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Stock Photos",
+                        "description": "High-resolution stock photos for commercial use.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "999",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 9,
+                    "item": {
+                        "@type": "Product",
+                        "name": "UI Kit",
+                        "description": "Complete UI kit with components for web and mobile apps.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "3400",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 10,
+                    "item": {
+                        "@type": "Product",
+                        "name": "Web Templates",
+                        "description": "Modern website templates suitable for various industries.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "PKR",
+                            "price": "2799",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                }
+            ]
+        }
+    </script>
 </head>
 
 <body>
@@ -1464,329 +1723,375 @@
         <div class="container">
             <a href="#" class="logo">LARAIB</a>
 
-            <nav id="nav">
+            <nav id="nav" aria-label="Main Navigation">
                 <a href="#home">Home</a>
                 <a href="#shop">Shop</a>
                 <a href="#terms">Terms</a>
+                <a href="#about">About</a>
                 <a href="#reviews">Reviews</a>
                 <a href="#contact">Contact</a>
             </nav>
 
             <!-- ─── REPLACE PHONE NUMBER HERE ─── -->
-            <a class="cta" href="https://wa.me/923001234567" target="_blank" rel="noopener">
+            <a class="cta" href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">
                 Chat Now
             </a>
 
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </header>
 
-    <!-- ─── HOME / HERO SECTION ─── -->
-    <section class="home fade-section" id="home">
-        <div class="home-content">
-            <div class="home-text">
-                <h1>
-                    Digital <br /><span class="accent">Products</span> That <br />Empower You
-                </h1>
-                <p class="sub-headline">
-                    Discover premium digital tools, templates, and resources crafted to
-                    elevate your work, streamline your process, and spark creativity.
-                </p>
-                <div class="home-cta-group">
-                    <a href="#shop" class="btn-primary">Explore Products</a>
-                    <a href="#contact" class="btn-secondary">Get in Touch</a>
+    <!-- ─── MAIN CONTENT ─── -->
+    <main role="main">
+
+        <!-- ─── HOME / HERO ─── -->
+        <section class="home fade-section" id="home">
+            <div class="home-content">
+                <div class="home-text">
+                    <h1>
+                        Digital <br />Products That <br />Empower You
+                    </h1>
+                    <p class="sub-headline">
+                        Discover premium digital tools, templates, and resources crafted to
+                        elevate your work, streamline your process, and spark creativity.
+                    </p>
+                </div>
+                <div class="home-image">
+                    <img src="images/geek.png" alt="Laraib's Digital Store - hero illustration showing digital products" loading="lazy" />
                 </div>
             </div>
-            <div class="home-image">
-                <img src="images/geek.png" alt="Laraib's Digital Store Hero" loading="lazy" />
-            </div>
-        </div>
-    </section>
 
-    <!-- ─── BRAND RIBBON ─── -->
-    <section class="brand-ribbon">
-        <div class="ribbon-track">
-            <div class="ribbon-content">
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
+            <!-- ─── RED STRIP ─── -->
+            <div class="brand-ribbon">
+                <div class="ribbon-track">
+                    <div class="ribbon-content">
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                    </div>
+                    <div class="ribbon-content">
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                        <span>Laraib's Digital Store</span>
+                    </div>
+                </div>
             </div>
-            <div class="ribbon-content">
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-                <span>Laraib's Digital Store</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ─── SHOP SECTION ─── -->
-    <section class="shop fade-section" id="shop">
-        <div class="shop-container">
-            <div class="shop-header">
-                <h2>Featured Products</h2>
-                <a href="shopviewall.html" class="btn-view-all">View All →</a>
-            </div>
+        <!-- ─── SHOP ─── -->
+        <section class="shop fade-section" id="shop">
+            <div class="shop-container">
+                <div class="shop-header">
+                    <h2>Featured Products</h2>
+                    <a href="shopviewall.html" class="btn-view-all">View All →</a>
+                </div>
 
-            <div class="shop-grid">
-
-                <!-- Card 1 (Big) -->
-                <div class="product-card card-big" data-tilt>
-                    <img src="images/product1.jpg" alt="Product 1" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Premium Bundle</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 4,500</span>
-                            <span class="new-price">PKR 2,999</span>
+                <div class="shop-grid">
+                    <div class="product-card">
+                        <img src="images/product1.jpg" alt="Premium Bundle - all-in-one digital bundle with templates, planners, and resources" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Premium Bundle</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 4,500</span>
+                                <span class="new-price">PKR 2,999</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Premium Bundle">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Premium Bundle">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product2.jpg" alt="Product 2" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Digital Planner</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 2,500</span>
-                            <span class="new-price">PKR 1,299</span>
+                    <div class="product-card">
+                        <img src="images/product2.jpg" alt="Digital Planner - comprehensive planner for productivity and goal setting" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Digital Planner</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 2,500</span>
+                                <span class="new-price">PKR 1,299</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Digital Planner">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Digital Planner">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product3.jpg" alt="Product 3" loading="lazy" />
-                    <div class="product-info">
-                        <h3>E‑book Pack</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 1,200</span>
-                            <span class="new-price">PKR 849</span>
+                    <div class="product-card">
+                        <img src="images/product3.jpg" alt="E-book Pack - collection of high-quality e-books on various topics" loading="lazy" />
+                        <div class="product-info">
+                            <h3>E‑book Pack</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 1,200</span>
+                                <span class="new-price">PKR 849</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="E-book Pack">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="E-book Pack">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product4.jpg" alt="Product 4" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Mockup Set</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 3,200</span>
-                            <span class="new-price">PKR 1,900</span>
+                    <div class="product-card">
+                        <img src="images/product4.jpg" alt="Mockup Set - professional mockup templates for branding and presentations" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Mockup Set</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 3,200</span>
+                                <span class="new-price">PKR 1,900</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Mockup Set">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Mockup Set">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product5.jpg" alt="Product 5" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Icon Pack</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 800</span>
-                            <span class="new-price">PKR 599</span>
+                    <div class="product-card">
+                        <img src="images/product5.jpg" alt="Icon Pack - modern icon set for web and mobile projects" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Icon Pack</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 800</span>
+                                <span class="new-price">PKR 599</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Icon Pack">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Icon Pack">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product6.jpg" alt="Product 6" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Social Templates</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 2,200</span>
-                            <span class="new-price">PKR 1,450</span>
+                    <div class="product-card">
+                        <img src="images/product6.jpg" alt="Social Templates - ready-to-use templates for all social media platforms" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Social Templates</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 2,200</span>
+                                <span class="new-price">PKR 1,450</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Social Templates">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Social Templates">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product7.jpg" alt="Product 7" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Font Bundle</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 3,500</span>
-                            <span class="new-price">PKR 2,200</span>
+                    <div class="product-card">
+                        <img src="images/product7.jpg" alt="Font Bundle - curated collection of fonts for designers and creatives" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Font Bundle</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 3,500</span>
+                                <span class="new-price">PKR 2,200</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Font Bundle">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Font Bundle">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product8.jpg" alt="Product 8" loading="lazy" />
-                    <div class="product-info">
-                        <h3>Stock Photos</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 1,500</span>
-                            <span class="new-price">PKR 999</span>
+                    <div class="product-card">
+                        <img src="images/product8.jpg" alt="Stock Photos - high-resolution photos for commercial use" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Stock Photos</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 1,500</span>
+                                <span class="new-price">PKR 999</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Stock Photos">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="Stock Photos">Buy Now</button>
                     </div>
-                </div>
 
-                <div class="product-card" data-tilt>
-                    <img src="images/product9.jpg" alt="Product 9" loading="lazy" />
-                    <div class="product-info">
-                        <h3>UI Kit</h3>
-                        <div class="price-wrapper">
-                            <span class="old-price">PKR 5,500</span>
-                            <span class="new-price">PKR 3,400</span>
+                    <div class="product-card">
+                        <img src="images/product9.jpg" alt="UI Kit - complete component kit for web and mobile applications" loading="lazy" />
+                        <div class="product-info">
+                            <h3>UI Kit</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 5,500</span>
+                                <span class="new-price">PKR 3,400</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="UI Kit">Buy Now</button>
                         </div>
-                        <button class="btn-add-cart" data-product="UI Kit">Buy Now</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ─── TERMS SECTION ─── -->
-    <section class="terms fade-section" id="terms">
-        <div class="terms-container">
-            <div class="terms-glass">
-                <h2>Terms & Conditions</h2>
-                <p class="terms-intro">
-                    Welcome to Laraib's Digital Store. By using our website and purchasing our digital products,
-                    you agree to comply with and be bound by the following terms and conditions.
-                </p>
-
-                <div class="terms-grid">
-                    <div class="term-item">
-                        <h3>
-                            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                            Digital Product Delivery
-                        </h3>
-                        <p>All products are delivered instantly via download link or email immediately after purchase. If you encounter any issues accessing your order, our support team is ready to assist.</p>
                     </div>
 
-                    <div class="term-item">
-                        <h3>
-                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-                            License & Usage Rights
-                        </h3>
-                        <p>Purchased products include a license for personal or commercial use, unless specified otherwise. Redistribution, reselling, or sharing of our digital assets is strictly prohibited.</p>
-                    </div>
-
-                    <div class="term-item">
-                        <h3>
-                            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-                            Refund & Cancellation Policy
-                        </h3>
-                        <p>Due to the digital nature of our products, all sales are final and non-refundable. However, if you experience technical difficulties, please contact us for a resolution.</p>
-                    </div>
-
-                    <div class="term-item">
-                        <h3>
-                            <svg viewBox="0 0 24 24"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm-2.5 16.5L4.5 12.5l2.1-2.1 2.9 2.9 7.5-7.5 2.1 2.1-9.5 9.6z"/></svg>
-                            Privacy & Data Security
-                        </h3>
-                        <p>Your privacy is paramount. We use secure payment gateways and do not store your financial information. Your personal data is safe and never shared with third parties.</p>
+                    <div class="product-card">
+                        <img src="images/product10.jpg" alt="Web Templates - modern website templates for various industries" loading="lazy" />
+                        <div class="product-info">
+                            <h3>Web Templates</h3>
+                            <div class="price-wrapper">
+                                <span class="old-price">PKR 4,200</span>
+                                <span class="new-price">PKR 2,799</span>
+                            </div>
+                            <button class="btn-add-cart" data-product="Web Templates">Buy Now</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ─── REVIEWS SECTION ─── -->
-    <section class="reviews fade-section" id="reviews">
-        <div class="reviews-container">
-            <div class="reviews-header">
-                <h2>Customer Reviews</h2>
-                <button class="btn-add-review" id="openReviewModal">Add Review</button>
-            </div>
+        <!-- ─── TERMS ─── -->
+        <section class="terms fade-section" id="terms">
+            <div class="terms-bg"></div>
+            <div class="terms-bg-overlay"></div>
 
-            <div class="review-track-container">
-                <div class="review-track" id="reviewTrack">
-                    <!-- Reviews will be rendered here by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="terms-container">
+                <div class="terms-glass">
+                    <h2>Terms & Conditions</h2>
+                    <p class="terms-intro">
+                        Welcome to Laraib's Digital Store. By using our website and purchasing our digital products,
+                        you agree to comply with and be bound by the following terms and conditions.
+                    </p>
 
-    <!-- ─── REVIEW MODAL ─── -->
-    <div class="modal-overlay" id="reviewModal">
-        <div class="modal-box">
-            <button class="modal-close" id="closeReviewModal">&times;</button>
-            <h3>Share Your Feedback</h3>
-            <form id="reviewForm">
-                <div class="form-group">
-                    <label for="reviewName">Your Name</label>
-                    <input type="text" id="reviewName" name="name" placeholder="e.g. John Doe" required />
-                </div>
-                <div class="form-group">
-                    <label for="reviewRating">Rating</label>
-                    <select id="reviewRating" name="rating" required>
-                        <option value="5">★★★★★ (5)</option>
-                        <option value="4">★★★★☆ (4)</option>
-                        <option value="3">★★★☆☆ (3)</option>
-                        <option value="2">★★☆☆☆ (2)</option>
-                        <option value="1">★☆☆☆☆ (1)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="reviewComment">Your Review</label>
-                    <textarea id="reviewComment" name="comment" placeholder="Share your experience with our products..." required></textarea>
-                </div>
-                <button type="submit" class="btn-submit-review" id="submitReviewBtn">Submit Review</button>
-                <div class="form-status" id="formStatus"></div>
-            </form>
-        </div>
-    </div>
+                    <div class="terms-grid">
+                        <div class="term-item">
+                            <h3>
+                                <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                                Digital Product Delivery
+                            </h3>
+                            <p>All products are delivered instantly via download link or email immediately after purchase. If you encounter any issues accessing your order, our support team is ready to assist.</p>
+                        </div>
 
-    <!-- ─── CONTACT SECTION ─── -->
-    <section class="contact fade-section" id="contact">
-        <div class="contact-container">
+                        <div class="term-item">
+                            <h3>
+                                <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                                License & Usage Rights
+                            </h3>
+                            <p>Purchased products include a license for personal or commercial use, unless specified otherwise. Redistribution, reselling, or sharing of our digital assets is strictly prohibited.</p>
+                        </div>
 
-            <div class="contact-glass">
-                <h2>Get in Touch</h2>
-                <div class="contact-details">
-                    <div class="contact-detail-item">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span>123 Digital Avenue, Lahore, Pakistan</span>
-                    </div>
-                    <div class="contact-detail-item">
-                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                        <span>+92 300 1234567</span>
-                    </div>
-                    <div class="contact-detail-item">
-                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        <!-- ─── REPLACE EMAIL HERE ─── -->
-                        <span>support@laraibsdigital.com</span>
+                        <div class="term-item">
+                            <h3>
+                                <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                                Refund & Cancellation Policy
+                            </h3>
+                            <p>Due to the digital nature of our products, all sales are final and non-refundable. However, if you experience technical difficulties, please contact us for a resolution.</p>
+                        </div>
+
+                        <div class="term-item">
+                            <h3>
+                                <svg viewBox="0 0 24 24"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm-2.5 16.5L4.5 12.5l2.1-2.1 2.9 2.9 7.5-7.5 2.1 2.1-9.5 9.6z"/></svg>
+                                Privacy & Data Security
+                            </h3>
+                            <p>Your privacy is paramount. We use secure payment gateways and do not store your financial information. Your personal data is safe and never shared with third parties.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="contact-glass">
-                <h2>Send Us a Message</h2>
-                <form id="contactForm">
+        <!-- ─── ABOUT ─── -->
+        <section class="about fade-section" id="about">
+            <div class="about-container">
+                <div class="about-glass">
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h2>About Laraib's Digital Store</h2>
+
+                            <p>
+                                <strong>Our Story</strong>
+                                Laraib's Digital Store is a premier destination for digital products, offering a curated selection of high-quality resources designed to empower professionals and creatives. We bridge the gap between complex digital solutions and user-friendly accessibility, ensuring everyone has the tools they need to succeed.
+                            </p>
+
+                            <p>
+                                <strong>Vision &amp; Mission</strong>
+                                Our vision is to become a global leader in the digital product space, known for quality, integrity, and innovation. Our mission is to provide tools that simplify work, enhance creativity, and drive success for our customers, while fostering a community where creators and consumers grow together.
+                            </p>
+
+                            <p>
+                                <strong>Meet the Founder</strong>
+                                Laraib is a dedicated entrepreneur with a deep passion for technology and design. With a background in digital strategy and a keen eye for emerging trends, Laraib founded this store to provide a trusted platform where quality meets convenience. Driven by a customer-first approach, Laraib personally ensures every product is meticulously vetted and curated to meet the highest standards.
+                            </p>
+                        </div>
+
+                        <div class="about-images">
+                            <div class="about-image-item">
+                                <img src="images/visionandmission.jpg" alt="Laraib's Digital Store vision and mission - global leadership in digital products" loading="lazy" />
+                            </div>
+                            <div class="about-image-item">
+                                <img src="images/ceoimg.jpg" alt="Laraib - founder and CEO of Laraib's Digital Store" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── REVIEWS ─── -->
+        <section class="reviews fade-section" id="reviews">
+            <div class="reviews-container">
+                <div class="reviews-header">
+                    <h2>Customer Reviews</h2>
+                    <button class="btn-add-review" id="openReviewModal">Add Review</button>
+                </div>
+
+                <div class="review-track-container">
+                    <div class="review-track" id="reviewTrack"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── REVIEW MODAL ─── -->
+        <div class="modal-overlay" id="reviewModal">
+            <div class="modal-box">
+                <button class="modal-close" id="closeReviewModal" aria-label="Close review form">&times;</button>
+                <h3>Share Your Feedback</h3>
+                <form id="reviewForm">
                     <div class="form-group">
-                        <label for="contactName">Your Name</label>
-                        <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+                        <label for="reviewName">Your Name</label>
+                        <input type="text" id="reviewName" name="name" placeholder="e.g. John Doe" required />
                     </div>
                     <div class="form-group">
-                        <label for="contactEmail">Your Email</label>
-                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+                        <label for="reviewRating">Rating</label>
+                        <select id="reviewRating" name="rating" required>
+                            <option value="5">★★★★★ (5)</option>
+                            <option value="4">★★★★☆ (4)</option>
+                            <option value="3">★★★☆☆ (3)</option>
+                            <option value="2">★★☆☆☆ (2)</option>
+                            <option value="1">★☆☆☆☆ (1)</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="contactMessage">Message</label>
-                        <textarea id="contactMessage" name="message" placeholder="How can we help you?" required></textarea>
+                        <label for="reviewComment">Your Review</label>
+                        <textarea id="reviewComment" name="comment" placeholder="Share your experience with our products..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Send Message</button>
+                    <button type="submit" class="btn-submit-review" id="submitReviewBtn">Submit Review</button>
+                    <div class="form-status" id="formStatus"></div>
                 </form>
             </div>
-
         </div>
-    </section>
+
+        <!-- ─── CONTACT ─── -->
+        <section class="contact fade-section" id="contact">
+            <div class="contact-container">
+                <div class="contact-glass">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <span>123 Digital Avenue, Lahore, Pakistan</span>
+                        </div>
+                        <div class="contact-detail-item">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <span>+92 300 1234567</span>
+                        </div>
+                        <div class="contact-detail-item">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <span>support@laraibsdigital.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-glass">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Your Email</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- ─── FOOTER ─── -->
     <footer>
@@ -1798,8 +2103,12 @@
                 <a href="#home">Home</a>
                 <a href="#shop">Shop</a>
                 <a href="#terms">Terms</a>
+                <a href="#about">About</a>
                 <a href="#reviews">Reviews</a>
                 <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-sitemap">
+                <a href="/sitemap.xml" style="color: rgba(255,255,255,0.6); font-size: 12px; text-decoration: none;">Sitemap</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1809,275 +2118,313 @@
 
     <!-- ─── SCRIPT ─── -->
     <script>
-        // ── Hamburger ──
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.getElementById('nav');
+        (function() {
+            "use strict";
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
+            // ── HAMBURGER MENU ──
+            function initHamburger() {
+                const hamburger = document.getElementById('hamburger');
+                const nav = document.getElementById('nav');
 
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-            });
-        });
+                if (!hamburger || !nav) return;
 
-        document.addEventListener('click', (e) => {
-            const header = document.querySelector('header');
-            if (!header.contains(e.target) && nav.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
+                function toggleMenu(expanded) {
+                    hamburger.classList.toggle('active', expanded);
+                    nav.classList.toggle('active', expanded);
+                    hamburger.setAttribute('aria-expanded', expanded);
+                }
+
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isActive = nav.classList.contains('active');
+                    toggleMenu(!isActive);
+                });
+
+                // Close on link click
+                nav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (nav.classList.contains('active')) {
+                            toggleMenu(false);
+                        }
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    const header = document.querySelector('header');
+                    if (!header.contains(e.target) && nav.classList.contains('active')) {
+                        toggleMenu(false);
+                    }
+                });
+
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && nav.classList.contains('active')) {
+                        toggleMenu(false);
+                    }
+                });
             }
-        });
 
-        // ── Buy Now: WhatsApp Redirect ──
-        document.querySelectorAll('.btn-add-cart').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const productName = this.getAttribute('data-product');
-                // ─── REPLACE PHONE NUMBER HERE ───
-                const phoneNumber = '923001234567';
-                const message = `Hi, I'm interested in buying: ${productName}`;
-                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-                window.open(url, '_blank');
-            });
-        });
+            // ── BUY NOW BUTTONS ──
+            function initBuyNow() {
+                const buttons = document.querySelectorAll('.btn-add-cart');
+                if (!buttons.length) return;
 
-        // ── 3D Tilt Effect on Shop Cards ──
-        document.querySelectorAll('.product-card[data-tilt]').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -6;
-                const rotateY = ((x - centerX) / centerX) * 6;
-                this.style.transform =
-                    `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-                this.style.boxShadow =
-                    `0 16px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)`;
-            });
+                buttons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const productName = this.getAttribute('data-product');
+                        // ─── REPLACE PHONE NUMBER HERE ───
+                        const phoneNumber = '923001234567';
+                        const message = `Hi, I'm interested in buying: ${productName}`;
+                        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-                this.style.boxShadow =
-                    '0 4px 16px rgba(0,0,0,0.04)';
-            });
-        });
+                        // Loading state
+                        const originalText = this.textContent;
+                        this.disabled = true;
+                        this.textContent = 'Redirecting...';
 
-        // ── Reviews Data (static – never changes) ──
-        const reviewsData = [{
-            name: "Alice Johnson",
-            rating: 5,
-            comment: "Absolutely loved the digital planner! It's beautifully designed and super functional."
-        }, {
-            name: "Bob Smith",
-            rating: 4,
-            comment: "Great quality products. The bundle was a steal for the price."
-        }, {
-            name: "Charlie Davis",
-            rating: 5,
-            comment: "The UI Kit saved me hours of design work. Highly recommend!"
-        }, {
-            name: "Diana Prince",
-            rating: 3,
-            comment: "Good products, but I wished the templates were more customizable."
-        }, {
-            name: "Ethan Hunt",
-            rating: 5,
-            comment: "Fantastic customer service and top-notch digital assets. Will buy again!"
-        }, {
-            name: "Fiona Gallagher",
-            rating: 4,
-            comment: "The social templates are perfect for my business. Very professional."
-        }, {
-            name: "George Costanza",
-            rating: 2,
-            comment: "Had some issues with the download link, but support fixed it quickly."
-        }, {
-            name: "Hermione Granger",
-            rating: 5,
-            comment: "I love the font bundle! It's perfect for my design projects."
-        }, {
-            name: "Indiana Jones",
-            rating: 4,
-            comment: "Stock photos are high quality. Would love to see more variety."
-        }, {
-            name: "Jack Sparrow",
-            rating: 5,
-            comment: "Premium Bundle is worth every penny. Saved me hundreds of dollars."
-        }];
+                        // Brief delay to show loading state
+                        setTimeout(() => {
+                            window.open(url, '_blank');
+                            // Restore button after a delay (in case user returns)
+                            setTimeout(() => {
+                                this.disabled = false;
+                                this.textContent = originalText;
+                            }, 2000);
+                        }, 300);
+                    });
+                });
+            }
 
-        // ── Render Reviews (static, only these 10, doubled for seamless loop) ──
-        function renderReviews() {
-            const track = document.getElementById('reviewTrack');
-            const allReviews = [...reviewsData, ...reviewsData];
-            track.innerHTML = allReviews.map(review => `
-                        <div class="review-card">
-                            <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
-                            <div class="name">${review.name}</div>
-                            <div class="comment">${review.comment}</div>
-                            <div class="date">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
-                        </div>
-                    `).join('');
-        }
+            // ── REVIEWS RENDER ──
+            function initReviews() {
+                const track = document.getElementById('reviewTrack');
+                if (!track) return;
 
-        renderReviews();
+                const reviewsData = [
+                    { name: "Alice Johnson", rating: 5, comment: "Absolutely loved the digital planner! It's beautifully designed and super functional." },
+                    { name: "Bob Smith", rating: 4, comment: "Great quality products. The bundle was a steal for the price." },
+                    { name: "Charlie Davis", rating: 5, comment: "The UI Kit saved me hours of design work. Highly recommend!" },
+                    { name: "Diana Prince", rating: 3, comment: "Good products, but I wished the templates were more customizable." },
+                    { name: "Ethan Hunt", rating: 5, comment: "Fantastic customer service and top-notch digital assets. Will buy again!" },
+                    { name: "Fiona Gallagher", rating: 4, comment: "The social templates are perfect for my business. Very professional." },
+                    { name: "George Costanza", rating: 2, comment: "Had some issues with the download link, but support fixed it quickly." },
+                    { name: "Hermione Granger", rating: 5, comment: "I love the font bundle! It's perfect for my design projects." },
+                    { name: "Indiana Jones", rating: 4, comment: "Stock photos are high quality. Would love to see more variety." },
+                    { name: "Jack Sparrow", rating: 5, comment: "Premium Bundle is worth every penny. Saved me hundreds of dollars." }
+                ];
 
-        // ── Review Modal Logic ──
-        const modal = document.getElementById('reviewModal');
-        const openBtn = document.getElementById('openReviewModal');
-        const closeBtn = document.getElementById('closeReviewModal');
-        const form = document.getElementById('reviewForm');
-        const formStatus = document.getElementById('formStatus');
-        const submitBtn = document.getElementById('submitReviewBtn');
+                const allReviews = [...reviewsData, ...reviewsData];
+                track.innerHTML = allReviews.map(review => `
+                            <div class="review-card">
+                                <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+                                <div class="name">${review.name}</div>
+                                <div class="comment">${review.comment}</div>
+                                <div class="date">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+                            </div>
+                        `).join('');
+            }
 
-        function openModal() {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            formStatus.className = 'form-status';
-            formStatus.textContent = '';
-        }
+            // ── REVIEW MODAL ──
+            function initReviewModal() {
+                const modal = document.getElementById('reviewModal');
+                const openBtn = document.getElementById('openReviewModal');
+                const closeBtn = document.getElementById('closeReviewModal');
+                const form = document.getElementById('reviewForm');
+                const formStatus = document.getElementById('formStatus');
+                const submitBtn = document.getElementById('submitReviewBtn');
 
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+                if (!modal || !openBtn || !closeBtn || !form) return;
 
-        openBtn.addEventListener('click', openModal);
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
+                function openModal() {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    formStatus.className = 'form-status';
+                    formStatus.textContent = '';
+                    // Set focus to first input
+                    const firstInput = form.querySelector('input, select, textarea');
+                    if (firstInput) setTimeout(() => firstInput.focus(), 100);
+                }
 
-        // ── Review Form Submission (Formspree) ──
-        // ✅ UPDATED WITH YOUR FORM ID: xaqgjdrl
-        const REVIEW_FORM_URL = 'https://formspree.io/f/xaqgjdrl';
+                function closeModal() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // Return focus to open button
+                    openBtn.focus();
+                }
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+                openBtn.addEventListener('click', openModal);
+                closeBtn.addEventListener('click', closeModal);
 
-            const formData = new FormData(form);
-            const data = {
-                name: formData.get('name'),
-                rating: formData.get('rating'),
-                comment: formData.get('comment')
-            };
+                // Close on overlay click
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) closeModal();
+                });
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            formStatus.className = 'form-status';
-            formStatus.textContent = '';
-
-            fetch(REVIEW_FORM_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Network response was not ok.');
-                    }
-                })
-                .then(() => {
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = '✅ Thank you! Your review has been submitted.';
-
-                    // ── DO NOT add the review to the website ──
-                    // The 10 static reviews stay unchanged.
-
-                    form.reset();
-                    setTimeout(() => {
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
                         closeModal();
-                        formStatus.className = 'form-status';
-                        formStatus.textContent = '';
-                    }, 2000);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    formStatus.className = 'form-status error';
-                    formStatus.textContent = '❌ Oops! Something went wrong. Please try again.';
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Review';
-                });
-        });
-
-        // ── Contact Form (Formspree) ──
-        // ✅ Also using the same ID for contact messages
-        const CONTACT_FORM_URL = 'https://formspree.io/f/xaqgjdrl';
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const btn = this.querySelector('.btn-submit');
-            const originalText = btn.textContent;
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
-
-            const data = {
-                name: document.getElementById('contactName').value,
-                email: document.getElementById('contactEmail').value,
-                message: document.getElementById('contactMessage').value
-            };
-
-            fetch(CONTACT_FORM_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert('✅ Thank you! Your message has been sent.');
-                        this.reset();
-                    } else {
-                        throw new Error('Network response was not ok.');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('❌ Oops! Something went wrong. Please try again.');
-                })
-                .finally(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                });
-        });
-
-        // ── Fade-in on Scroll (Intersection Observer) ──
-        document.addEventListener('DOMContentLoaded', () => {
-            const fadeElements = document.querySelectorAll('.fade-section');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
                     }
                 });
-            }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -40px 0px'
+
+                // ── Form submission ──
+                const REVIEW_FORM_URL = 'https://formspree.io/f/xaqgjdrl';
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(form);
+                    const data = {
+                        name: formData.get('name'),
+                        rating: formData.get('rating'),
+                        comment: formData.get('comment')
+                    };
+
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    formStatus.className = 'form-status';
+                    formStatus.textContent = '';
+
+                    fetch(REVIEW_FORM_URL, {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) return response.json();
+                            throw new Error('Network response was not ok.');
+                        })
+                        .then(() => {
+                            formStatus.className = 'form-status success';
+                            formStatus.textContent = '✅ Thank you! Your review has been submitted.';
+                            form.reset();
+                            setTimeout(() => {
+                                closeModal();
+                                formStatus.className = 'form-status';
+                                formStatus.textContent = '';
+                            }, 2000);
+                        })
+                        .catch(() => {
+                            formStatus.className = 'form-status error';
+                            formStatus.textContent = '❌ Oops! Something went wrong. Please try again.';
+                        })
+                        .finally(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Submit Review';
+                        });
+                });
+            }
+
+            // ── CONTACT FORM ──
+            function initContactForm() {
+                const form = document.getElementById('contactForm');
+                if (!form) return;
+
+                const CONTACT_FORM_URL = 'https://formspree.io/f/xaqgjdrl';
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const btn = this.querySelector('.btn-submit');
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Sending...';
+                    btn.disabled = true;
+
+                    const data = {
+                        name: document.getElementById('contactName').value,
+                        email: document.getElementById('contactEmail').value,
+                        message: document.getElementById('contactMessage').value
+                    };
+
+                    fetch(CONTACT_FORM_URL, {
+                            method: 'POST',
+                            body: JSON.stringify(data),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('✅ Thank you! Your message has been sent.');
+                                form.reset();
+                            } else {
+                                throw new Error('Network response was not ok.');
+                            }
+                        })
+                        .catch(() => {
+                            alert('❌ Oops! Something went wrong. Please try again.');
+                        })
+                        .finally(() => {
+                            btn.textContent = originalText;
+                            btn.disabled = false;
+                        });
+                });
+            }
+
+            // ── FADE-IN ON SCROLL ──
+            function initFadeIn() {
+                const fadeElements = document.querySelectorAll('.fade-section');
+                if (!fadeElements.length) return;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                fadeElements.forEach(el => observer.observe(el));
+            }
+
+            // ── REDUCED MOTION SUPPORT ──
+            function initReducedMotion() {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+                if (prefersReducedMotion.matches) {
+                    // Disable scroll animations
+                    document.querySelectorAll('.fade-section').forEach(el => {
+                        el.style.transition = 'none';
+                        el.classList.add('is-visible');
+                    });
+                    // Disable ribbon animation
+                    const ribbon = document.querySelector('.brand-ribbon .ribbon-track');
+                    if (ribbon) {
+                        ribbon.style.animation = 'none';
+                    }
+                    // Disable reviews animation
+                    const reviews = document.querySelector('.review-track');
+                    if (reviews) {
+                        reviews.style.animation = 'none';
+                    }
+                }
+            }
+
+            // ── INIT ALL ──
+            document.addEventListener('DOMContentLoaded', function() {
+                initHamburger();
+                initBuyNow();
+                initReviews();
+                initReviewModal();
+                initContactForm();
+                initFadeIn();
+                initReducedMotion();
+
+                console.log('✅ All modules initialized successfully.');
+                console.log('📌 Remember to replace the phone number and email address with your own.');
+                console.log('📌 Update the OG image URL with your actual image URL.');
+                console.log('📌 Place your product images in the "images/" folder.');
             });
 
-            fadeElements.forEach(el => observer.observe(el));
-        });
-
-        console.log('✅ Formspree ID set: xaqgjdrl');
-        console.log('📌 Reviews are sent to your email and NOT added to the website.');
-        console.log('📌 Remember to replace phone number and email address with your own.');
+        })();
     </script>
 
 </body>
