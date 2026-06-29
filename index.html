@@ -6,23 +6,23 @@
     <meta name="robots" content="index, follow" />
 
     <!-- ─── SEO & META ─── -->
-    <title>LDS – Laraib's Digital Store | Premium Digital Products</title>
-<link rel="icon" type="image/svg+xml" href="https://unpkg.com/lucide-static/icons/shopping-bag.svg">
-    <meta name="description" content="Laraib's Digital Store offers premium digital products – templates, planners, bundles, UI kits, and more. Quality resources for professionals and creatives." />
-    <link rel="canonical" href="https://www.laraibsdigital.com/" />
+    <title>Aima's Digital Store | Premium Digital Products</title>
+    <link rel="icon" type="image/svg+xml" href="https://unpkg.com/lucide-static/icons/shopping-bag.svg" />
+    <meta name="description" content="Aima's Digital Store offers premium digital products – templates, planners, bundles, UI kits, and more. Quality resources for professionals and creatives." />
+    <link rel="canonical" href="https://www.aimasdigitalstore.com/" />
 
     <!-- ─── OPEN GRAPH / SOCIAL ─── -->
-    <meta property="og:title" content="Laraib's Digital Store – Premium Digital Products" />
+    <meta property="og:title" content="Aima's Digital Store – Premium Digital Products" />
     <meta property="og:description" content="Explore our curated collection of digital tools, templates, and resources designed to empower your work and creativity." />
-    <meta property="og:image" content="https://www.laraibsdigital.com/images/og-image.jpg" />
-    <meta property="og:url" content="https://www.laraibsdigital.com/" />
+    <meta property="og:image" content="https://www.aimasdigitalstore.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://www.aimasdigitalstore.com/" />
     <meta property="og:type" content="website" />
 
     <!-- ─── TWITTER CARDS ─── -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Laraib's Digital Store – Premium Digital Products" />
+    <meta name="twitter:title" content="Aima's Digital Store – Premium Digital Products" />
     <meta name="twitter:description" content="Premium digital tools, templates, and resources for professionals and creatives." />
-    <meta name="twitter:image" content="https://www.laraibsdigital.com/images/og-image.jpg" />
+    <meta name="twitter:image" content="https://www.aimasdigitalstore.com/images/og-image.jpg" />
 
     <!-- ─── FONTS (with display=swap) ─── -->
     <link href="https://fonts.cdnfonts.com/css/eaglore" rel="stylesheet" />
@@ -117,6 +117,7 @@
             font-weight: bold;
             text-decoration: none;
             font-family: var(--font-heading);
+            letter-spacing: 3px;
         }
 
         nav {
@@ -220,6 +221,16 @@
             position: relative;
             z-index: 1;
             background: var(--white);
+            overflow: hidden;
+        }
+
+        .home canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .home-content {
@@ -231,6 +242,8 @@
             gap: 20px;
             padding: 0 8%;
             flex: 1 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .home-text {
@@ -296,6 +309,8 @@
             margin-top: 30px;
             transform: translateZ(0);
             backface-visibility: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         .home .brand-ribbon .ribbon-track {
@@ -306,6 +321,7 @@
             transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             animation: scroll-ribbon 28s linear infinite;
+            position: relative;
         }
 
         .home .brand-ribbon .ribbon-content {
@@ -323,6 +339,7 @@
             align-items: center;
             gap: 12px;
             color: var(--white);
+            line-height: 1.2;
         }
 
         .home .brand-ribbon .ribbon-content span::before {
@@ -330,11 +347,16 @@
             font-size: 16px;
             opacity: 0.5;
             color: var(--white);
+            flex-shrink: 0;
         }
 
         @keyframes scroll-ribbon {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* ───────────── SHOP ───────────── */
@@ -486,105 +508,6 @@
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
-        }
-
-        /* ───────────── TERMS ───────────── */
-        .terms {
-            padding: 60px 8%;
-            position: relative;
-            z-index: 1;
-            background: var(--white);
-        }
-
-        .terms-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background: url('images/background.jpg') center/cover no-repeat;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
-        .terms-bg-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background: rgba(255, 255, 255, 0.85);
-        }
-
-        .terms-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .terms-glass {
-            background: var(--white);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: var(--radius-section);
-            padding: 40px;
-        }
-
-        .terms-glass h2 {
-            font-family: var(--font-heading);
-            color: var(--brand-red);
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin-bottom: 12px;
-        }
-
-        .terms-intro {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 28px;
-            max-width: 80%;
-        }
-
-        .terms-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .term-item {
-            background: var(--white);
-            border: 1px solid var(--brand-red);
-            border-radius: var(--radius-card);
-            padding: 20px 24px;
-            box-shadow: var(--shadow-soft);
-            transition: transform var(--transition), box-shadow var(--transition);
-        }
-
-        .term-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .term-item h3 {
-            font-family: var(--font-body);
-            color: var(--brand-red);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .term-item h3 svg {
-            width: 28px;
-            height: 28px;
-            flex-shrink: 0;
-            fill: var(--brand-red);
-        }
-
-        .term-item p {
-            color: var(--text-dark);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 0;
         }
 
         /* ───────────── ABOUT ───────────── */
@@ -785,8 +708,12 @@
         }
 
         @keyframes scroll-reviews {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* ───────────── MODAL ───────────── */
@@ -818,8 +745,14 @@
         }
 
         @keyframes modalSlideIn {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-close {
@@ -1033,7 +966,7 @@
             font-family: var(--font-heading);
             font-size: 22px;
             font-weight: 400;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
         }
 
         .footer-links {
@@ -1160,13 +1093,6 @@
                 height: 180px;
             }
 
-            .terms-intro {
-                max-width: 100%;
-            }
-            .terms-grid {
-                gap: 18px;
-            }
-
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -1203,6 +1129,7 @@
             }
             .logo {
                 font-size: 24px;
+                letter-spacing: 2px;
             }
             .hamburger {
                 width: 28px;
@@ -1291,29 +1218,6 @@
                 font-size: 11px;
             }
 
-            .terms {
-                padding: 40px 4%;
-            }
-            .terms-glass {
-                padding: 24px;
-            }
-            .terms-glass h2 {
-                font-size: 2rem;
-            }
-            .terms-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .term-item {
-                padding: 18px 20px;
-            }
-            .term-item h3 {
-                font-size: 1rem;
-            }
-            .term-item p {
-                font-size: 0.9rem;
-            }
-
             .about {
                 padding: 40px 4%;
             }
@@ -1366,6 +1270,7 @@
             }
             .footer-brand h3 {
                 font-size: 20px;
+                letter-spacing: 2px;
             }
             .footer-links a {
                 font-size: 12px;
@@ -1383,6 +1288,7 @@
             }
             .logo {
                 font-size: 20px;
+                letter-spacing: 1.5px;
             }
             .hamburger {
                 width: 24px;
@@ -1461,25 +1367,6 @@
                 font-size: 10px;
             }
 
-            .terms-glass {
-                padding: 16px;
-            }
-            .terms-glass h2 {
-                font-size: 1.6rem;
-            }
-            .terms-grid {
-                gap: 12px;
-            }
-            .term-item {
-                padding: 14px 16px;
-            }
-            .term-item h3 {
-                font-size: 0.95rem;
-            }
-            .term-item p {
-                font-size: 0.85rem;
-            }
-
             .about-glass {
                 padding: 16px;
             }
@@ -1534,6 +1421,7 @@
             }
             .footer-brand h3 {
                 font-size: 18px;
+                letter-spacing: 1.5px;
             }
             .footer-links a {
                 font-size: 11px;
@@ -1551,8 +1439,8 @@
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "Laraib's Digital Store",
-            "url": "https://www.laraibsdigital.com/",
+            "name": "Aima's Digital Store",
+            "url": "https://www.aimasdigitalstore.com/",
             "description": "Premium digital products including templates, planners, bundles, UI kits, and more for professionals and creatives."
         }
     </script>
@@ -1561,156 +1449,46 @@
             "@context": "https://schema.org",
             "@type": "ItemList",
             "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Premium Bundle",
-                        "description": "All-in-one digital bundle with templates, planners, and resources.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "2999",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Digital Planner",
-                        "description": "Comprehensive digital planner for productivity and goal setting.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "1299",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "item": {
-                        "@type": "Product",
-                        "name": "E‑book Pack",
-                        "description": "Collection of high-quality e-books on various topics.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "849",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 4,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Mockup Set",
-                        "description": "Professional mockup templates for branding and presentations.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "1900",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 5,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Icon Pack",
-                        "description": "Modern icon set for web and mobile projects.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "599",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 6,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Social Templates",
-                        "description": "Ready-to-use social media templates for all platforms.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "1450",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 7,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Font Bundle",
-                        "description": "Curated font collection for designers and creatives.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "2200",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 8,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Stock Photos",
-                        "description": "High-resolution stock photos for commercial use.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "999",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 9,
-                    "item": {
-                        "@type": "Product",
-                        "name": "UI Kit",
-                        "description": "Complete UI kit with components for web and mobile apps.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "3400",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 10,
-                    "item": {
-                        "@type": "Product",
-                        "name": "Web Templates",
-                        "description": "Modern website templates suitable for various industries.",
-                        "offers": {
-                            "@type": "Offer",
-                            "priceCurrency": "PKR",
-                            "price": "2799",
-                            "availability": "https://schema.org/InStock"
-                        }
-                    }
-                }
+                { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Premium Bundle",
+                    "description": "All-in-one digital bundle with templates, planners, and resources.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "2999",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Digital Planner",
+                    "description": "Comprehensive digital planner for productivity and goal setting.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "1299",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "E‑book Pack",
+                    "description": "Collection of high-quality e-books on various topics.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "849",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Mockup Set",
+                    "description": "Professional mockup templates for branding and presentations.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "1900",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Icon Pack",
+                    "description": "Modern icon set for web and mobile projects.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "599",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Social Templates",
+                    "description": "Ready-to-use social media templates for all platforms.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "1450",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 7, "item": { "@type": "Product", "name": "Font Bundle",
+                    "description": "Curated font collection for designers and creatives.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "2200",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 8, "item": { "@type": "Product", "name": "Stock Photos",
+                    "description": "High-resolution stock photos for commercial use.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "999",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 9, "item": { "@type": "Product", "name": "UI Kit",
+                    "description": "Complete UI kit with components for web and mobile apps.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "3400",
+                        "availability": "https://schema.org/InStock" } } },
+                { "@type": "ListItem", "position": 10, "item": { "@type": "Product", "name": "Web Templates",
+                    "description": "Modern website templates suitable for various industries.",
+                    "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "2799",
+                        "availability": "https://schema.org/InStock" } } }
             ]
         }
     </script>
@@ -1721,19 +1499,18 @@
     <!-- ─── HEADER ─── -->
     <header>
         <div class="container">
-            <a href="#" class="logo">LARAIB</a>
+            <a href="#" class="logo">AIMA</a>
 
             <nav id="nav" aria-label="Main Navigation">
                 <a href="#home">Home</a>
                 <a href="#shop">Shop</a>
-                <a href="#terms">Terms</a>
+                <!-- Terms link removed -->
                 <a href="#about">About</a>
                 <a href="#reviews">Reviews</a>
                 <a href="#contact">Contact</a>
             </nav>
 
-            <!-- ─── REPLACE PHONE NUMBER HERE ─── -->
-            <a class="cta" href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">
+            <a class="cta" href="https://wa.me/923351182296" target="_blank" rel="noopener noreferrer">
                 Chat Now
             </a>
 
@@ -1750,6 +1527,8 @@
 
         <!-- ─── HOME / HERO ─── -->
         <section class="home fade-section" id="home">
+            <canvas id="homeCanvas"></canvas>
+
             <div class="home-content">
                 <div class="home-text">
                     <h1>
@@ -1761,7 +1540,7 @@
                     </p>
                 </div>
                 <div class="home-image">
-                    <img src="images/geek.png" alt="Laraib's Digital Store - hero illustration showing digital products" loading="lazy" />
+                    <img src="images/geek.png" alt="Aima's Digital Store - hero illustration showing digital products" loading="lazy" />
                 </div>
             </div>
 
@@ -1769,18 +1548,18 @@
             <div class="brand-ribbon">
                 <div class="ribbon-track">
                     <div class="ribbon-content">
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
                     </div>
                     <div class="ribbon-content">
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
-                        <span>Laraib's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
+                        <span>Aima's Digital Store</span>
                     </div>
                 </div>
             </div>
@@ -1918,67 +1697,17 @@
             </div>
         </section>
 
-        <!-- ─── TERMS ─── -->
-        <section class="terms fade-section" id="terms">
-            <div class="terms-bg"></div>
-            <div class="terms-bg-overlay"></div>
-
-            <div class="terms-container">
-                <div class="terms-glass">
-                    <h2>Terms & Conditions</h2>
-                    <p class="terms-intro">
-                        Welcome to Laraib's Digital Store. By using our website and purchasing our digital products,
-                        you agree to comply with and be bound by the following terms and conditions.
-                    </p>
-
-                    <div class="terms-grid">
-                        <div class="term-item">
-                            <h3>
-                                <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                                Digital Product Delivery
-                            </h3>
-                            <p>All products are delivered instantly via download link or email immediately after purchase. If you encounter any issues accessing your order, our support team is ready to assist.</p>
-                        </div>
-
-                        <div class="term-item">
-                            <h3>
-                                <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-                                License & Usage Rights
-                            </h3>
-                            <p>Purchased products include a license for personal or commercial use, unless specified otherwise. Redistribution, reselling, or sharing of our digital assets is strictly prohibited.</p>
-                        </div>
-
-                        <div class="term-item">
-                            <h3>
-                                <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-                                Refund & Cancellation Policy
-                            </h3>
-                            <p>Due to the digital nature of our products, all sales are final and non-refundable. However, if you experience technical difficulties, please contact us for a resolution.</p>
-                        </div>
-
-                        <div class="term-item">
-                            <h3>
-                                <svg viewBox="0 0 24 24"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm-2.5 16.5L4.5 12.5l2.1-2.1 2.9 2.9 7.5-7.5 2.1 2.1-9.5 9.6z"/></svg>
-                                Privacy & Data Security
-                            </h3>
-                            <p>Your privacy is paramount. We use secure payment gateways and do not store your financial information. Your personal data is safe and never shared with third parties.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- ─── ABOUT ─── -->
         <section class="about fade-section" id="about">
             <div class="about-container">
                 <div class="about-glass">
                     <div class="about-grid">
                         <div class="about-text">
-                            <h2>About Laraib's Digital Store</h2>
+                            <h2>About Aima's Digital Store</h2>
 
                             <p>
                                 <strong>Our Story</strong>
-                                Laraib's Digital Store is a premier destination for digital products, offering a curated selection of high-quality resources designed to empower professionals and creatives. We bridge the gap between complex digital solutions and user-friendly accessibility, ensuring everyone has the tools they need to succeed.
+                                Aima's Digital Store is a premier destination for digital products, offering a curated selection of high-quality resources designed to empower professionals and creatives. We bridge the gap between complex digital solutions and user-friendly accessibility, ensuring everyone has the tools they need to succeed.
                             </p>
 
                             <p>
@@ -1988,16 +1717,16 @@
 
                             <p>
                                 <strong>Meet the Founder</strong>
-                                Laraib is a dedicated entrepreneur with a deep passion for technology and design. With a background in digital strategy and a keen eye for emerging trends, Laraib founded this store to provide a trusted platform where quality meets convenience. Driven by a customer-first approach, Laraib personally ensures every product is meticulously vetted and curated to meet the highest standards.
+                                Aima is a dedicated entrepreneur with a deep passion for technology and design. With a background in digital strategy and a keen eye for emerging trends, Aima founded this store to provide a trusted platform where quality meets convenience. Driven by a customer-first approach, Aima personally ensures every product is meticulously vetted and curated to meet the highest standards.
                             </p>
                         </div>
 
                         <div class="about-images">
                             <div class="about-image-item">
-                                <img src="images/visionandmission.jpg" alt="Laraib's Digital Store vision and mission - global leadership in digital products" loading="lazy" />
+                                <img src="images/visionandmission.jpg" alt="Aima's Digital Store vision and mission - global leadership in digital products" loading="lazy" />
                             </div>
                             <div class="about-image-item">
-                                <img src="images/ceoimg.jpg" alt="Laraib - founder and CEO of Laraib's Digital Store" loading="lazy" />
+                                <img src="images/ceoimg.jpg" alt="Aima - founder and CEO of Aima's Digital Store" loading="lazy" />
                             </div>
                         </div>
                     </div>
@@ -2061,11 +1790,11 @@
                         </div>
                         <div class="contact-detail-item">
                             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                            <span>+92 300 1234567</span>
+                            <span>+92 335 1182296</span>
                         </div>
                         <div class="contact-detail-item">
                             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            <span>support@laraibsdigital.com</span>
+                            <span>aimakhan2315@gmail.com</span>
                         </div>
                     </div>
                 </div>
@@ -2097,22 +1826,19 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>LARAIB</h3>
+                <h3>AIMA</h3>
             </div>
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#shop">Shop</a>
-                <a href="#terms">Terms</a>
+                <!-- Terms link removed -->
                 <a href="#about">About</a>
                 <a href="#reviews">Reviews</a>
                 <a href="#contact">Contact</a>
             </div>
-            <div class="footer-sitemap">
-                <a href="/sitemap.xml" style="color: rgba(255,255,255,0.6); font-size: 12px; text-decoration: none;">Sitemap</a>
-            </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Laraib's Digital Store. All rights reserved.
+            &copy; 2026 Aima's Digital Store. All rights reserved.
         </div>
     </footer>
 
@@ -2120,6 +1846,101 @@
     <script>
         (function() {
             "use strict";
+
+            // ── PARTICLE BACKGROUND SYSTEM ──
+            function initParticles(canvasId, particleCount = 55, connectionDist = 170) {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+
+                const ctx = canvas.getContext("2d");
+
+                function resize() {
+                    canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+                    canvas.height = canvas.parentElement.offsetHeight || window.innerHeight;
+                }
+                resize();
+
+                const particles = [];
+
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.vx = (Math.random() - 0.5) * 0.45;
+                        this.vy = (Math.random() - 0.5) * 0.45;
+                        this.size = Math.random() * 2 + 1;
+                    }
+
+                    update() {
+                        this.x += this.vx;
+                        this.y += this.vy;
+
+                        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                    }
+
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = "rgba(126, 35, 30, 0.6)";
+                        ctx.fill();
+                    }
+                }
+
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+
+                function drawLines() {
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < connectionDist) {
+                                const alpha = (connectionDist - dist) / connectionDist;
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = `rgba(126, 35, 30, ${alpha * 0.15})`;
+                                ctx.lineWidth = 0.7;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                }
+
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    for (const p of particles) {
+                        p.update();
+                        p.draw();
+                    }
+
+                    drawLines();
+
+                    requestAnimationFrame(animate);
+                }
+
+                animate();
+
+                // ── Resize handler ──
+                const resizeObserver = new ResizeObserver(() => {
+                    resize();
+                });
+                resizeObserver.observe(canvas.parentElement);
+
+                // Also listen to window resize
+                window.addEventListener('resize', resize);
+
+                // ── Cleanup ──
+                return () => {
+                    resizeObserver.disconnect();
+                    window.removeEventListener('resize', resize);
+                };
+            }
 
             // ── HAMBURGER MENU ──
             function initHamburger() {
@@ -2140,7 +1961,6 @@
                     toggleMenu(!isActive);
                 });
 
-                // Close on link click
                 nav.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', function() {
                         if (nav.classList.contains('active')) {
@@ -2149,7 +1969,6 @@
                     });
                 });
 
-                // Close on outside click
                 document.addEventListener('click', function(e) {
                     const header = document.querySelector('header');
                     if (!header.contains(e.target) && nav.classList.contains('active')) {
@@ -2157,7 +1976,6 @@
                     }
                 });
 
-                // Close on Escape key
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && nav.classList.contains('active')) {
                         toggleMenu(false);
@@ -2174,20 +1992,16 @@
                     button.addEventListener('click', function(e) {
                         e.stopPropagation();
                         const productName = this.getAttribute('data-product');
-                        // ─── REPLACE PHONE NUMBER HERE ───
-                        const phoneNumber = '923001234567';
+                        const phoneNumber = '923351182296';
                         const message = `Hi, I'm interested in buying: ${productName}`;
                         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-                        // Loading state
                         const originalText = this.textContent;
                         this.disabled = true;
                         this.textContent = 'Redirecting...';
 
-                        // Brief delay to show loading state
                         setTimeout(() => {
                             window.open(url, '_blank');
-                            // Restore button after a delay (in case user returns)
                             setTimeout(() => {
                                 this.disabled = false;
                                 this.textContent = originalText;
@@ -2203,16 +2017,36 @@
                 if (!track) return;
 
                 const reviewsData = [
-                    { name: "Alice Johnson", rating: 5, comment: "Absolutely loved the digital planner! It's beautifully designed and super functional." },
-                    { name: "Bob Smith", rating: 4, comment: "Great quality products. The bundle was a steal for the price." },
-                    { name: "Charlie Davis", rating: 5, comment: "The UI Kit saved me hours of design work. Highly recommend!" },
-                    { name: "Diana Prince", rating: 3, comment: "Good products, but I wished the templates were more customizable." },
-                    { name: "Ethan Hunt", rating: 5, comment: "Fantastic customer service and top-notch digital assets. Will buy again!" },
-                    { name: "Fiona Gallagher", rating: 4, comment: "The social templates are perfect for my business. Very professional." },
-                    { name: "George Costanza", rating: 2, comment: "Had some issues with the download link, but support fixed it quickly." },
-                    { name: "Hermione Granger", rating: 5, comment: "I love the font bundle! It's perfect for my design projects." },
-                    { name: "Indiana Jones", rating: 4, comment: "Stock photos are high quality. Would love to see more variety." },
-                    { name: "Jack Sparrow", rating: 5, comment: "Premium Bundle is worth every penny. Saved me hundreds of dollars." }
+                    { name: "Ayesha Khan", rating: 5,
+                        comment: "Absolutely loved the digital planner! It's beautifully designed and super functional. Best investment I've made for my business." },
+                    { name: "Ali Ahmed", rating: 5,
+                        comment: "The UI Kit saved me hours of design work. Highly recommend to all developers out there!" },
+                    { name: "Fatima Noor", rating: 5,
+                        comment: "Premium Bundle is worth every penny. The templates are top-notch and easy to customize." },
+                    { name: "Usman Malik", rating: 4,
+                        comment: "Great quality products. The bundle was a steal for the price. Will definitely buy again." },
+                    { name: "Zara Hassan", rating: 5,
+                        comment: "Fantastic customer service and top-notch digital assets. The fonts bundle is amazing!" },
+                    { name: "Hamza Ali", rating: 4,
+                        comment: "Social templates are perfect for my business. Very professional and eye-catching designs." },
+                    { name: "Hira Shah", rating: 4,
+                        comment: "Good products, but I wished the templates were more customizable. Still great value though." },
+                    { name: "Bilal Ahmed", rating: 5,
+                        comment: "The E-book Pack has some incredible reads. Absolutely love the variety and quality." },
+                    { name: "Maha Zain", rating: 5,
+                        comment: "I love the font bundle! It's perfect for my design projects. Will definitely buy more." },
+                    { name: "Hassan Raza", rating: 4,
+                        comment: "Stock photos are high quality. Would love to see more variety in the collection." },
+                    { name: "Anam Shahid", rating: 5,
+                        comment: "The Digital Planner has transformed how I organize my work. Game-changer!" },
+                    { name: "Danish Khan", rating: 5,
+                        comment: "Premium Bundle saved me hundreds of dollars. The quality is exceptional." },
+                    { name: "Sana Farooq", rating: 4,
+                        comment: "Great products overall. The UI Kit is very comprehensive and well-organized." },
+                    { name: "Fahad Ali", rating: 5,
+                        comment: "Social Templates are amazing! My engagement increased significantly after using them." },
+                    { name: "Mehak Ahmed", rating: 5,
+                        comment: "The Mockup Set is so versatile. I've used it for multiple client projects already." }
                 ];
 
                 const allReviews = [...reviewsData, ...reviewsData];
@@ -2242,7 +2076,6 @@
                     document.body.style.overflow = 'hidden';
                     formStatus.className = 'form-status';
                     formStatus.textContent = '';
-                    // Set focus to first input
                     const firstInput = form.querySelector('input, select, textarea');
                     if (firstInput) setTimeout(() => firstInput.focus(), 100);
                 }
@@ -2250,26 +2083,22 @@
                 function closeModal() {
                     modal.classList.remove('active');
                     document.body.style.overflow = '';
-                    // Return focus to open button
                     openBtn.focus();
                 }
 
                 openBtn.addEventListener('click', openModal);
                 closeBtn.addEventListener('click', closeModal);
 
-                // Close on overlay click
                 modal.addEventListener('click', function(e) {
                     if (e.target === modal) closeModal();
                 });
 
-                // Close on Escape key
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && modal.classList.contains('active')) {
                         closeModal();
                     }
                 });
 
-                // ── Form submission ──
                 const REVIEW_FORM_URL = 'https://formspree.io/f/xaqgjdrl';
 
                 form.addEventListener('submit', function(e) {
@@ -2390,17 +2219,14 @@
             function initReducedMotion() {
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
                 if (prefersReducedMotion.matches) {
-                    // Disable scroll animations
                     document.querySelectorAll('.fade-section').forEach(el => {
                         el.style.transition = 'none';
                         el.classList.add('is-visible');
                     });
-                    // Disable ribbon animation
                     const ribbon = document.querySelector('.brand-ribbon .ribbon-track');
                     if (ribbon) {
                         ribbon.style.animation = 'none';
                     }
-                    // Disable reviews animation
                     const reviews = document.querySelector('.review-track');
                     if (reviews) {
                         reviews.style.animation = 'none';
@@ -2418,10 +2244,14 @@
                 initFadeIn();
                 initReducedMotion();
 
+                // ── INIT PARTICLE BACKGROUNDS ──
+                initParticles('homeCanvas', 55, 170);
+                // Terms canvas initialization removed.
+
                 console.log('✅ All modules initialized successfully.');
-                console.log('📌 Remember to replace the phone number and email address with your own.');
-                console.log('📌 Update the OG image URL with your actual image URL.');
-                console.log('📌 Place your product images in the "images/" folder.');
+                console.log('📌 WhatsApp: 923351182296');
+                console.log('📌 Email: aimakhan2315@gmail.com');
+                console.log('📌 Store: Aima\'s Digital Store');
             });
 
         })();
